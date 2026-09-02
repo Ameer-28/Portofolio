@@ -139,7 +139,7 @@ export function ExperienceEducation() {
                 <span>Pengembangan Proyek Praktis Terapan</span>
               </div>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Seluruh kapabilitas rekayasa backend diasah melalui implementasi proyek fungsional nyata (Lapangin, E-Commerce API, Train API) dengan fokus pada:
+                Kemampuan backend saya diasah lewat proyek nyata (Lapangin, E-Commerce API, Train API), dengan fokus pada:
               </p>
               <ul className="space-y-2 text-xs text-foreground/90">
                 <li className="flex items-start gap-2">

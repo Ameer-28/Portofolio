@@ -55,7 +55,7 @@ export function Hero() {
 
             {/* 3. Verified Positioning Statement */}
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl">
-              {profileData.tagline} Siswa Rekayasa Perangkat Lunak (RPL) di SMK Telkom Malang yang fokus merancang arsitektur server modular dan efisiensi query basis data modern.
+              Fokus merancang arsitektur backend yang andal, performa API tinggi, dan sistem database yang efisien. Siswa Rekayasa Perangkat Lunak (RPL) di SMK Telkom Malang yang terbiasa membangun server modular serta mengoptimalkan query basis data.
             </p>
 
             {/* 4. Core Technology Badges */}

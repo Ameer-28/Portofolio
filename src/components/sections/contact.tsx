@@ -38,7 +38,7 @@ export function Contact() {
       handle: "@aameeerr__",
       url: profileData.social.instagram || "https://www.instagram.com/aameeerr__/",
       icon: InstagramIcon,
-      description: "Profil sosial dan aktivitas keseharian.",
+      description: "Update keseharian & aktivitas personal.",
     },
   ];
 
