@@ -25,11 +25,11 @@ export const profileData: ProfileData = {
     "Menggunakan teknik vibe coding modern untuk mengintegrasikan antarmuka web client sebagai supporting capability.",
   profileImage: {
     src: "/images/profile.jpg",
-    isAvailable: false, // TODO: Set to true once profile.jpg is added to public/images/
+    isAvailable: true,
   },
   cv: {
     url: "/CV_Muhammad_Amin_Murtadho.pdf",
-    isAvailable: false, // TODO: Set to true once CV_Muhammad_Amin_Murtadho.pdf is added to public/
+    isAvailable: false, // Set to true once PDF file is placed in public/
   },
   social: {
     email: "muhammadaminmurtadho12@gmail.com",
