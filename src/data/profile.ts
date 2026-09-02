@@ -29,7 +29,7 @@ export const profileData: ProfileData = {
   },
   cv: {
     url: "/CV_Muhammad_Amin_Murtadho.pdf",
-    isAvailable: false, // Set to true once PDF file is placed in public/
+    isAvailable: true,
   },
   social: {
     email: "muhammadaminmurtadho12@gmail.com",
