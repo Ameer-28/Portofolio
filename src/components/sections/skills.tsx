@@ -1,122 +1,180 @@
 import * as React from "react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { skillGroups } from "@/data/skills";
-import { Server, Code2, Wrench } from "lucide-react";
+import { Server, Code2, Wrench, Database, Cpu, Layers } from "lucide-react";
 
 export function Skills() {
-  const categoryIcons = {
-    "Backend & Database": Server,
-    "Languages & Frameworks": Code2,
-    "Tools & DevOps": Wrench,
-  };
+  const backendSkills = [
+    { name: "NestJS", isPrimary: true },
+    { name: "TypeScript", isPrimary: true },
+    { name: "Prisma ORM", isPrimary: true },
+    { name: "PostgreSQL", isPrimary: true },
+    { name: "RESTful API", isPrimary: true },
+    { name: "Passport JWT (RBAC)", isSecondary: true },
+    { name: "Swagger / OpenAPI", isSecondary: true },
+    { name: "Bcrypt", isSecondary: true },
+    { name: "MySQL", isSecondary: true },
+  ];
+
+  const languageSkills = [
+    { name: "Node.js", isPrimary: true },
+    { name: "TypeScript", isPrimary: true },
+    { name: "JavaScript", isSecondary: true },
+    { name: "Next.js", isSecondary: true },
+    { name: "Tailwind CSS", isSecondary: true },
+    { name: "Java", isSecondary: true },
+    { name: "HTML5 / CSS3", isSecondary: false },
+  ];
+
+  const toolsSkills = [
+    { name: "Docker", isPrimary: true },
+    { name: "Git", isPrimary: true },
+    { name: "GitHub", isPrimary: true },
+    { name: "Postman", isSecondary: true },
+    { name: "Railway", isSecondary: true },
+    { name: "Vercel", isSecondary: true },
+    { name: "VS Code", isSecondary: false },
+  ];
 
   return (
     <section
       id="skills"
       aria-label="Keahlian Teknis & Tech Stack"
-      className="py-16 sm:py-24 border-t border-border/60 bg-muted/20 relative"
+      className="py-16 sm:py-24 border-t border-border/60 bg-muted/10 relative"
     >
       <Container size="lg">
         <SectionHeading
           badge="Technical Stack"
           title="Keahlian & Penguasaan Teknologi"
-          description="Kompilasi teknologi yang digunakan secara aktif dalam membangun sistem backend, perancangan basis data, dan integrasi aplikasi."
+          description="Kompilasi teknologi yang digunakan secara aktif dalam membangun arsitektur backend, pemodelan basis data relasional, dan integrasi antarmuka web modern."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillGroups.map((group) => {
-            const Icon =
-              categoryIcons[group.groupName as keyof typeof categoryIcons] || Code2;
-
-            return (
-              <Card
-                key={group.groupName}
-                className="bg-card border-border flex flex-col justify-between shadow-sm hover:border-border transition-colors"
-              >
-                <CardHeader className="pb-4">
-                  <div className="flex items-center gap-2.5 text-foreground">
-                    <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                      <Icon className="h-4 w-4" />
-                    </div>
-                    <CardTitle className="text-base font-semibold">
-                      {group.groupName}
-                    </CardTitle>
+        {/* Bento Grid Skills Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
+          {/* 1. Primary Bento: Backend & Database (8 cols on lg) */}
+          <div className="lg:col-span-8 rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-primary/50 transition-all group">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Server className="h-5 w-5" />
                   </div>
-                  <CardDescription className="text-xs pt-1.5 leading-relaxed">
-                    {group.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent className="pt-2">
-                  <div className="flex flex-wrap gap-2">
-                    {group.skills.map((skill) => {
-                      // Semantic badge variant based on verified hierarchy
-                      if (skill.isPrimary) {
-                        return (
-                          <Badge
-                            key={skill.name}
-                            variant="default"
-                            size="md"
-                            className="font-medium shadow-xs"
-                          >
-                            {skill.name}
-                          </Badge>
-                        );
-                      }
-
-                      if (skill.isSecondary) {
-                        return (
-                          <Badge
-                            key={skill.name}
-                            variant="secondary"
-                            size="md"
-                            className="border border-border/60 text-foreground"
-                          >
-                            {skill.name}
-                          </Badge>
-                        );
-                      }
-
-                      return (
-                        <Badge
-                          key={skill.name}
-                          variant="outline"
-                          size="md"
-                          className="text-muted-foreground hover:text-foreground transition-colors"
-                        >
-                          {skill.name}
-                        </Badge>
-                      );
-                    })}
+                  <div>
+                    <h3 className="text-base sm:text-lg font-bold text-foreground">
+                      Backend Architecture & Database
+                    </h3>
+                    <p className="text-xs text-muted-foreground font-mono">
+                      Spesialisasi Inti & Pemodelan Data
+                    </p>
                   </div>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
+                </div>
+                <Badge variant="default" size="sm" className="hidden sm:inline-flex font-mono text-[10px]">
+                  Core Focus
+                </Badge>
+              </div>
 
-        {/* Legend / Context Note */}
-        <div className="mt-8 pt-4 border-t border-border/40 flex flex-wrap items-center justify-between gap-4 text-xs text-muted-foreground font-mono">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-primary" />
-              Primary Specialization
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-secondary border border-border" />
-              Core Competency
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full border border-border" />
-              Supporting Ecosystem
-            </span>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-1">
+                Perancangan arsitektur server modular berbasis Dependency Injection, query database type-safe, serta standardisasi endpoint REST API dengan proteksi keamanan.
+              </p>
+            </div>
+
+            <div className="pt-6">
+              <div className="flex flex-wrap gap-2">
+                {backendSkills.map((skill) => (
+                  <Badge
+                    key={skill.name}
+                    variant={skill.isPrimary ? "default" : "secondary"}
+                    size="md"
+                    className={`font-mono text-xs ${
+                      skill.isPrimary
+                        ? "shadow-xs border border-primary/20"
+                        : "border border-border/70 text-foreground bg-muted/60"
+                    }`}
+                  >
+                    {skill.name}
+                  </Badge>
+                ))}
+              </div>
+            </div>
           </div>
-          <span className="text-[11px] text-muted-foreground/80">
-            Kompilasi berbasis proyek praktis & kurikulum RPL
-          </span>
+
+          {/* 2. Secondary Bento: Languages & Frameworks (4 cols on lg) */}
+          <div className="lg:col-span-4 rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-accent/50 transition-all group">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2.5">
+                <div className="h-9 w-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
+                  <Code2 className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-foreground">
+                    Languages & Frontend
+                  </h3>
+                  <p className="text-xs text-muted-foreground font-mono">
+                    Integrasi Client & Scripting
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-1">
+                Bahasa pemrograman utama serta kapabilitas integrasi web client modern menggunakan Next.js dan Tailwind CSS.
+              </p>
+            </div>
+
+            <div className="pt-6">
+              <div className="flex flex-wrap gap-2">
+                {languageSkills.map((skill) => (
+                  <Badge
+                    key={skill.name}
+                    variant={skill.isPrimary ? "default" : "secondary"}
+                    size="md"
+                    className={`font-mono text-xs ${
+                      skill.isPrimary
+                        ? "shadow-xs border border-accent/20 bg-accent text-accent-foreground"
+                        : "border border-border/70 text-foreground bg-muted/60"
+                    }`}
+                  >
+                    {skill.name}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Third Bento: Tools, DevOps & Platforms (12 cols on lg) */}
+          <div className="lg:col-span-12 rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs hover:border-border transition-all">
+            <div className="space-y-2 max-w-xl">
+              <div className="flex items-center gap-2.5">
+                <div className="h-9 w-9 rounded-xl bg-muted/80 border border-border/60 flex items-center justify-center text-foreground shrink-0">
+                  <Wrench className="h-5 w-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-foreground">
+                    Tools, DevOps & Cloud Platforms
+                  </h3>
+                  <p className="text-xs text-muted-foreground font-mono">
+                    Workflow, Version Control & Deployment
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Ekosistem alat kerja pengujian endpoint API, version control kolaboratif, containerization, dan platform deployment cloud.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2 md:justify-end">
+              {toolsSkills.map((skill) => (
+                <Badge
+                  key={skill.name}
+                  variant={skill.isPrimary ? "secondary" : "outline"}
+                  size="md"
+                  className="font-mono text-xs border border-border/70 text-foreground bg-muted/60"
+                >
+                  {skill.name}
+                </Badge>
+              ))}
+            </div>
+          </div>
         </div>
       </Container>
     </section>
