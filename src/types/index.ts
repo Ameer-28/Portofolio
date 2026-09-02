@@ -98,6 +98,6 @@ export interface CertificationItem {
   id: string;
   name: string;
   issuer: string;
-  periodOrYear: string;
+  periodOrYear?: string;
   credentialUrl?: string;
 }

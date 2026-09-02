@@ -21,12 +21,5 @@ export const certificationsData: CertificationItem[] = [
     id: "cert-nextjs-nestjs",
     name: "Website Development using Next.js & Nest.js",
     issuer: "SMK Telkom Malang",
-    periodOrYear: "2024 — 2025",
-  },
-  {
-    id: "cert-backend-arch",
-    name: "Backend Architecture & Database Management",
-    issuer: "SMK Telkom Malang",
-    periodOrYear: "2024",
   },
 ];

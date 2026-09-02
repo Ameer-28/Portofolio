@@ -133,13 +133,15 @@ export function ExperienceEducation() {
                             Penerbit: <span className="text-foreground font-medium">{cert.issuer}</span>
                           </p>
                         </div>
-                        <Badge
-                          variant="secondary"
-                          size="sm"
-                          className="font-mono text-[11px] shrink-0 bg-muted/60"
-                        >
-                          {cert.periodOrYear}
-                        </Badge>
+                        {cert.periodOrYear && (
+                          <Badge
+                            variant="secondary"
+                            size="sm"
+                            className="font-mono text-[11px] shrink-0 bg-muted/60"
+                          >
+                            {cert.periodOrYear}
+                          </Badge>
+                        )}
                       </div>
                     </CardHeader>
                   </Card>
