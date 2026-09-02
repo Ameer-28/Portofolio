@@ -18,7 +18,7 @@ export function Hero() {
     <section
       id="home"
       aria-label="Introduction & Profile Overview"
-      className="py-12 sm:py-20 lg:py-28 relative overflow-hidden"
+      className="pt-8 sm:pt-14 lg:pt-20 pb-12 sm:pb-20 lg:pb-28 relative overflow-hidden"
     >
       <Container size="lg">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -78,7 +78,7 @@ export function Hero() {
                 variant="primary"
                 size="lg"
                 href="#projects"
-                className="font-medium text-sm"
+                className="font-medium text-sm rounded-full px-6"
               >
                 View Projects
                 <ArrowRight className="h-4 w-4 ml-1.5" />
@@ -88,8 +88,9 @@ export function Hero() {
                 variant="outline"
                 size="lg"
                 href={profileData.cv.url}
+                download
                 isExternal
-                className="font-mono text-xs sm:text-sm"
+                className="font-mono text-xs sm:text-sm rounded-full px-6"
               >
                 <FileText className="h-4 w-4 mr-1.5" />
                 Download CV
