@@ -17,12 +17,12 @@ export const profileData: ProfileData = {
   tagline:
     "Fokus merancang arsitektur backend yang handal, performa API tinggi, dan sistem database modern.",
   aboutBio: [
-    "Saya adalah siswa jurusan Rekayasa Perangkat Lunak (RPL) di SMK Telkom Malang (2024–2027) dengan fokus utama pada backend development dan rekayasa perangkat lunak.",
-    "Fokus pembelajaran dan eksplorasi saya berpusat pada perancangan arsitektur server modular, pembuatan REST API terstruktur, serta pemodelan database relasional menggunakan ekosistem NestJS, TypeScript, Prisma ORM, dan PostgreSQL.",
-    "Selain spesialisasi backend, saya juga memiliki kapabilitas pendukung dalam mengintegrasikan antarmuka web client modern menggunakan Next.js dan Tailwind CSS untuk menghasilkan sistem aplikasi digital yang utuh dan fungsional.",
+    "Saya adalah siswa jurusan Rekayasa Perangkat Lunak (RPL) di SMK Telkom Malang (2024–2027) dengan fokus spesialisasi penuh pada Backend Development dan Rekayasa Perangkat Lunak.",
+    "Fokus pembelajaran dan eksplorasi teknis saya berpusat pada perancangan arsitektur server modular berbasis Dependency Injection, pembuatan RESTful API terstruktur, serta pemodelan database relasional menggunakan ekosistem NestJS, TypeScript, Prisma ORM, dan PostgreSQL.",
+    "Saya mendalami standardisasi endpoint API, otentikasi berbasis token JWT (Role-Based Access Control), dokumentasi Swagger/OpenAPI, serta pengujian logika bisnis dan query database untuk memastikan reliabilitas sistem backend.",
   ],
   frontendApproach:
-    "Menggunakan teknik vibe coding modern untuk mengintegrasikan antarmuka web client sebagai supporting capability.",
+    "Fokus penuh pada rekayasa sistem backend modular, type-safe API, dan pemodelan database relasional.",
   profileImage: {
     src: "/images/profile.jpg",
     isAvailable: true,

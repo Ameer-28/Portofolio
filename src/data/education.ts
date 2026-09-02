@@ -12,7 +12,7 @@ export const educationData: EducationData = {
     "Relational Database Modeling (PostgreSQL & Prisma ORM)",
     "Node.js & REST API Design",
     "Java Programming",
-    "Web Client Integration (HTML, CSS, JavaScript, Next.js)",
+    "Backend Security & Authentication (Passport JWT & Bcrypt)",
   ],
 };
 
