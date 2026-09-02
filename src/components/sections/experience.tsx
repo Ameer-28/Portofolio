@@ -143,15 +143,15 @@ export function ExperienceEducation() {
               </p>
               <ul className="space-y-2 text-xs text-foreground/90">
                 <li className="flex items-start gap-2">
-                  <span className="font-mono text-primary font-bold mt-0.5">•</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                   <span>Penerapan arsitektur modular NestJS berbasis Dependency Injection & Services.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="font-mono text-primary font-bold mt-0.5">•</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                   <span>Desain skema relasional, migrasi, dan query type-safe Prisma ORM & PostgreSQL.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="font-mono text-primary font-bold mt-0.5">•</span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
                   <span>Deployment lingkungan cloud serverless dan containerized (Railway & Vercel).</span>
                 </li>
               </ul>

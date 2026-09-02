@@ -10,7 +10,6 @@ export const projectsData: ProjectItem[] = [
     role: "Frontend Integration & Full-Stack System",
     technologies: [
       "Next.js",
-      "Vibe Coding",
       "TypeScript",
       "Tailwind CSS",
       "Vercel",
