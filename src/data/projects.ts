@@ -1,0 +1,100 @@
+import { ProjectItem } from "@/types";
+
+export const projectsData: ProjectItem[] = [
+  {
+    id: "lapangin-frontend",
+    slug: "lapangin-platform",
+    name: "Lapangin - Platform Booking Lapangan",
+    type: "Web App",
+    tier: "primary",
+    role: "Frontend Integration & Full-Stack System",
+    technologies: [
+      "Next.js",
+      "Vibe Coding",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vercel",
+    ],
+    description:
+      "Antarmuka web interaktif untuk platform pemesanan dan manajemen jadwal lapangan olahraga, terintegrasi langsung dengan Lapangin Backend API.",
+    liveUrl: "https://lapangin-frontend.vercel.app/",
+    githubUrl: "https://github.com/Ameer-28/Lapangin_frontend",
+    relatedProjectId: "lapangin-backend",
+  },
+  {
+    id: "lapangin-backend",
+    slug: "lapangin-api",
+    name: "Lapangin API - Service Booking Lapangan",
+    type: "Backend API",
+    tier: "backend-core",
+    role: "Backend Architect & API Developer",
+    technologies: [
+      "NestJS",
+      "TypeScript",
+      "Prisma ORM",
+      "PostgreSQL",
+      "Railway",
+      "REST API",
+    ],
+    description:
+      "Layanan backend utama penyedia endpoint pemesanan lapangan, validasi ketersediaan jadwal, manajemen relasi data dengan Prisma ORM, dan deployment Railway.",
+    liveUrl: "https://lapangin-backend.up.railway.app/",
+    githubUrl: "https://github.com/Ameer-28/Lapangin_backend",
+    relatedProjectId: "lapangin-frontend",
+  },
+  {
+    id: "ecommerce-api",
+    slug: "ecommerce-rest-api",
+    name: "E-Commerce REST API Platform",
+    type: "Backend API",
+    tier: "secondary-backend",
+    role: "Backend Developer",
+    technologies: [
+      "Node.js",
+      "NestJS",
+      "TypeScript",
+      "Prisma ORM",
+      "PostgreSQL",
+      "REST API",
+    ],
+    description:
+      "Arsitektur REST API untuk platform e-commerce mencakup manajemen produk, autentikasi pengguna, alur transaksi, dan integrasi database relasional.",
+    githubUrl: "https://github.com/Ameer-28/ecommerce-backend",
+  },
+  {
+    id: "train-ticketing-api",
+    slug: "train-ticketing-management-api",
+    name: "Train Ticketing & Management API",
+    type: "Backend API",
+    tier: "secondary-backend",
+    role: "Backend Developer",
+    technologies: [
+      "NestJS",
+      "TypeScript",
+      "Prisma ORM",
+      "PostgreSQL",
+      "REST API",
+    ],
+    description:
+      "Layanan API untuk pengelolaan jadwal kereta, pemesanan tiket perjalanan, dan alur relasi data rute serta gerbong kereta secara terstruktur.",
+    githubUrl: "https://github.com/Ameer-28/Train_Project",
+  },
+  {
+    id: "nest-prisma-boilerplate",
+    slug: "nestjs-prisma-architecture-boilerplate",
+    name: "NestJS & Prisma Architecture Boilerplate",
+    type: "Architecture Boilerplate",
+    tier: "boilerplate",
+    role: "Author / Architect",
+    technologies: [
+      "NestJS",
+      "Prisma ORM",
+      "TypeScript",
+      "Architecture",
+      "PostgreSQL",
+    ],
+    description:
+      "Starter template dan arsitektur modular standar untuk pengembangan aplikasi backend terstruktur menggunakan NestJS, Prisma ORM, dan PostgreSQL.",
+    githubUrl: "https://github.com/Ameer-28/Nest-Prisma",
+  },
+];
