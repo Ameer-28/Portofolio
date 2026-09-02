@@ -50,14 +50,14 @@ export function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="sticky top-3 sm:top-5 z-50 w-full px-4 sm:px-6 pointer-events-none">
-      <div className="mx-auto max-w-5xl">
-        {/* Floating Capsule Bar */}
-        <div className="pointer-events-auto rounded-full border border-border/80 bg-background/85 backdrop-blur-md shadow-xs transition-all flex items-center justify-between px-4 sm:px-5 py-2">
+    <header className="sticky top-3.5 sm:top-5 z-50 w-full px-3 sm:px-6 pointer-events-none">
+      <div className="mx-auto w-full md:w-fit max-w-sm md:max-w-4xl">
+        {/* Floating Capsule Navbar */}
+        <div className="pointer-events-auto rounded-full border border-border/80 bg-background/85 dark:bg-card/85 backdrop-blur-md shadow-xs dark:shadow-md transition-all flex items-center justify-between gap-3 sm:gap-5 px-3.5 sm:px-4 py-1.5 sm:py-2">
           {/* Brand */}
           <Link
             href="/"
-            className="font-mono text-sm sm:text-base font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full px-2 py-0.5"
+            className="font-mono text-xs sm:text-sm font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full px-2.5 py-1"
             onClick={closeMenu}
           >
             {profileData.brandName}
@@ -66,14 +66,14 @@ export function Navbar() {
           {/* Desktop Navigation Links */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-1"
+            className="hidden md:flex items-center gap-0.5"
           >
-            <ul className="flex items-center gap-1 text-xs sm:text-sm font-medium text-muted-foreground">
+            <ul className="flex items-center gap-0.5 text-xs font-medium text-muted-foreground">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="px-3 py-1.5 rounded-full transition-colors hover:text-foreground hover:bg-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className="px-3 py-1.5 rounded-full transition-all hover:text-foreground hover:bg-muted/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none"
                   >
                     {item.label}
                   </a>
@@ -82,9 +82,15 @@ export function Navbar() {
             </ul>
           </nav>
 
+          {/* Divider */}
+          <div
+            className="h-4 w-px bg-border/80 hidden md:block"
+            aria-hidden="true"
+          />
+
           {/* Desktop Actions: Theme Toggle + Download CV */}
           <div className="hidden md:flex items-center gap-2">
-            <ThemeToggle className="h-8 w-8 rounded-full" />
+            <ThemeToggle />
             <Button
               variant="outline"
               size="sm"
@@ -93,14 +99,14 @@ export function Navbar() {
               isExternal
               className="font-mono text-xs rounded-full px-3.5 h-8 border-border hover:bg-muted"
             >
-              <FileText className="h-3.5 w-3.5 mr-1.5" />
+              <FileText className="h-3.5 w-3.5 mr-1" />
               Download CV
             </Button>
           </div>
 
-          {/* Mobile Header Actions (Theme Toggle + Menu Toggle) */}
+          {/* Mobile Header Controls (Theme Toggle + Menu Button) */}
           <div className="flex items-center gap-1.5 md:hidden">
-            <ThemeToggle className="h-8 w-8 rounded-full" />
+            <ThemeToggle />
             <button
               type="button"
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -120,7 +126,7 @@ export function Navbar() {
             id="mobile-navigation"
             role="region"
             aria-label="Mobile Navigation Menu"
-            className="pointer-events-auto md:hidden mt-2 p-4 rounded-2xl border border-border/80 bg-background/95 backdrop-blur-md shadow-lg space-y-4 animate-in fade-in-0 zoom-in-95 duration-150"
+            className="pointer-events-auto md:hidden mt-2 p-4 rounded-2xl border border-border/80 bg-background/95 dark:bg-card/95 backdrop-blur-lg shadow-xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-150"
           >
             <nav aria-label="Mobile Navigation">
               <ul className="flex flex-col space-y-1">
