@@ -1,4 +1,5 @@
 import * as React from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -92,7 +93,32 @@ export function About() {
           </div>
 
           {/* Quick Profile Facts Card (5 cols on desktop) */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            {/* Profile Portrait */}
+            <div className="relative aspect-[4/5] w-full max-w-sm mx-auto lg:mx-0 lg:max-w-none rounded-2xl overflow-hidden border border-border/80 bg-muted/40 shadow-sm">
+              {profileData.profileImage.isAvailable ? (
+                <Image
+                  src={profileData.profileImage.src}
+                  alt={`${profileData.fullName} — ${profileData.primaryRole}`}
+                  fill
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-center"
+                />
+              ) : (
+                <div className="h-full w-full flex items-center justify-center font-mono text-4xl font-bold text-primary">
+                  AM
+                </div>
+              )}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-4 pt-10 pb-3">
+                <p className="text-sm font-semibold text-foreground">
+                  {profileData.fullName}
+                </p>
+                <p className="text-xs font-mono text-muted-foreground">
+                  {profileData.primaryRole}
+                </p>
+              </div>
+            </div>
+
             <Card className="bg-card/70 border-border shadow-sm">
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">

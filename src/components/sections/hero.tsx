@@ -1,5 +1,4 @@
 import * as React from "react";
-import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -111,21 +110,11 @@ export function Hero() {
           <div className="lg:col-span-5 space-y-4">
             {/* Top: Profile Identity Badge Card */}
             <div className="rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-4 shadow-sm flex items-center gap-4 transition-all hover:border-border">
-              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border border-border/80 shrink-0 bg-muted/40">
-                {profileData.profileImage.isAvailable ? (
-                  <Image
-                    src={profileData.profileImage.src}
-                    alt={`${profileData.fullName} — ${profileData.primaryRole}`}
-                    fill
-                    sizes="80px"
-                    priority
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="h-full w-full flex items-center justify-center font-mono font-bold text-primary">
-                    AM
-                  </div>
-                )}
+              <div
+                className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border border-border/80 shrink-0 bg-muted/40 flex items-center justify-center font-mono text-xl font-bold text-primary"
+                aria-hidden="true"
+              >
+                AM
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-1.5">
