@@ -12,6 +12,7 @@ import {
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Separator } from "@/components/ui/separator";
+import SlideTabsDemo from "@/components/ui/slide-tabs-demo";
 import { Terminal, Code2, ArrowRight, ExternalLink } from "lucide-react";
 
 export default function UIPreviewPage() {
@@ -251,6 +252,18 @@ export default function UIPreviewPage() {
                 <Badge variant="success" dot>Operational</Badge>
               </CardFooter>
             </Card>
+          </div>
+        </section>
+
+        {/* 7. Slide Tabs Primitive */}
+        <section className="space-y-4">
+          <SectionHeading
+            badge="Interactive Navigation"
+            title="SlideTabs Animated Pill Component"
+            description="Animated sliding cursor tabs powered by Framer Motion."
+          />
+          <div className="p-8 border rounded-xl bg-card flex items-center justify-center">
+            <SlideTabsDemo />
           </div>
         </section>
       </Container>
