@@ -2,6 +2,7 @@ import * as React from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { HandwritingText } from "@/components/ui/handwriting-text";
 import { profileData } from "@/data/profile";
 import { ArrowRight, FileText, Code2, Server, Database, Terminal, CheckCircle2 } from "lucide-react";
 
@@ -47,8 +48,19 @@ export function Hero() {
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.12]">
                 Backend Developer
               </h1>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-500 to-accent">
-                Specializing in Scalable APIs & Relational Databases
+              <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                <span>Building</span>
+                <HandwritingText
+                  words={[
+                    "scalable APIs.",
+                    "relational databases.",
+                    "modular servers.",
+                    "efficient queries.",
+                  ]}
+                  interval={3600}
+                  className="text-primary"
+                  height="1.25em"
+                />
               </p>
             </div>
 
