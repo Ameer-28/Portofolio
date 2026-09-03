@@ -56,7 +56,7 @@ export function About() {
           description="Konteks pendidikan formal, ketertarikan teknis, dan arah spesialisasi di bidang software engineering."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           {/* Narrative Column (7 cols on desktop) */}
           <div className="lg:col-span-7 space-y-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
             {profileData.aboutBio.map((paragraph, index) => (
@@ -92,17 +92,17 @@ export function About() {
             </div>
           </div>
 
-          {/* Quick Profile Facts Card (5 cols on desktop) */}
+          {/* Portrait + Quick Profile Facts Card (5 cols on desktop) */}
           <div className="lg:col-span-5 flex flex-col gap-4">
             {/* Profile Portrait */}
-            <div className="relative aspect-[4/5] w-full max-w-sm mx-auto lg:mx-0 lg:max-w-none rounded-2xl overflow-hidden border border-border/80 bg-muted/40 shadow-sm">
+            <div className="relative h-52 sm:h-56 w-full rounded-2xl overflow-hidden border border-border/80 bg-muted/40 shadow-sm">
               {profileData.profileImage.isAvailable ? (
                 <Image
                   src={profileData.profileImage.src}
                   alt={`${profileData.fullName} — ${profileData.primaryRole}`}
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover object-center"
+                  className="object-cover object-[center_30%]"
                 />
               ) : (
                 <div className="h-full w-full flex items-center justify-center font-mono text-4xl font-bold text-primary">
@@ -119,26 +119,26 @@ export function About() {
               </div>
             </div>
 
-            <Card className="bg-card/70 border-border shadow-sm">
-              <CardHeader className="pb-4">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-base font-mono">
+            <Card className="bg-card/70 border-border shadow-sm flex-1">
+              <CardHeader className="pb-3">
+                <div className="flex items-center justify-between gap-3">
+                  <CardTitle className="text-sm font-mono whitespace-nowrap">
                     Profile Snapshot
                   </CardTitle>
-                  <Badge variant="success" dot size="sm">
+                  <Badge variant="success" dot size="sm" className="whitespace-nowrap">
                     Open for Internship
                   </Badge>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-3.5 pt-0">
+              <CardContent className="space-y-1 pt-0">
                 {profileFacts.map((fact) => {
                   const Icon = fact.icon;
                   return (
                     <div
                       key={fact.label}
-                      className="flex items-center justify-between text-xs sm:text-sm py-1.5 border-b border-border/40 last:border-0"
+                      className="flex items-center justify-between gap-4 text-xs sm:text-sm py-2 border-b border-border/40 last:border-0"
                     >
-                      <span className="flex items-center gap-2 text-muted-foreground">
+                      <span className="flex items-center gap-2 text-muted-foreground whitespace-nowrap shrink-0">
                         <Icon className="h-3.5 w-3.5 text-muted-foreground" />
                         {fact.label}
                       </span>
