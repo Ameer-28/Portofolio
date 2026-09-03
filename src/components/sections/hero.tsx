@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { HandwritingText } from "@/components/ui/handwriting-text";
 import { profileData } from "@/data/profile";
-import { ArrowRight, FileText, Code2, Server, Database, Terminal, CheckCircle2 } from "lucide-react";
+import { ArrowRight, FileText, Code2, Server, Database } from "lucide-react";
 
 export function Hero() {
   const coreTech = [
@@ -27,9 +27,9 @@ export function Hero() {
       />
 
       <Container size="lg" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Value Proposition & CTAs (7 cols on desktop) */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+        <div className="flex">
+          {/* Value Proposition & CTAs */}
+          <div className="max-w-3xl space-y-6 text-left">
             {/* 1. Status Eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant="success" dot size="sm" className="font-mono shadow-xs">
@@ -115,74 +115,6 @@ export function Hero() {
                 <FileText className="h-4 w-4 mr-1.5" />
                 Download CV
               </Button>
-            </div>
-          </div>
-
-          {/* Right Column: Visual Developer Bento Card & Terminal Simulation (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Top: Profile Identity Badge Card */}
-            <div className="rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-4 shadow-sm flex items-center gap-4 transition-all hover:border-border">
-              <div
-                className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border border-border/80 shrink-0 bg-muted/40 flex items-center justify-center font-mono text-xl font-bold text-primary"
-                aria-hidden="true"
-              >
-                AM
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <p className="font-mono text-xs font-bold text-foreground">
-                    {profileData.brandName}
-                  </p>
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  {profileData.fullName}
-                </p>
-                <p className="text-xs font-mono text-muted-foreground">
-                  SMK Telkom Malang (2024–2027)
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom: Interactive Live NestJS Server Boot Terminal */}
-            <div className="rounded-2xl border border-border/80 bg-[#070b12] dark:bg-[#070b12] text-slate-300 font-mono text-[11px] sm:text-xs shadow-lg overflow-hidden border-t-indigo-500/30">
-              {/* Terminal Window Header */}
-              <div className="flex items-center justify-between px-3.5 py-2.5 bg-slate-900/90 border-b border-slate-800">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-                </div>
-                <span className="text-[10px] text-slate-400 flex items-center gap-1">
-                  <Terminal className="h-3 w-3 text-indigo-400" />
-                  server@ameer.dev: ~
-                </span>
-                <span className="text-[10px] text-emerald-400 font-semibold">200 OK</span>
-              </div>
-
-              {/* Terminal Logs Content */}
-              <div className="p-3.5 space-y-1.5 text-[11px] leading-relaxed select-none">
-                <p className="text-slate-400">
-                  <span className="text-indigo-400 font-bold">[Nest]</span> Starting Nest application...
-                </p>
-                <p className="text-emerald-400 flex items-center gap-1.5">
-                  <CheckCircle2 className="h-3 w-3 shrink-0" />
-                  <span>PrismaService: PostgreSQL DB Connected</span>
-                </p>
-                <p className="text-slate-300">
-                  <span className="text-sky-400">LOG</span> [RoutesResolver] LapanginController:
-                </p>
-                <p className="text-slate-400 pl-3">
-                  <span className="text-amber-400 font-semibold">POST</span> /api/v1/booking/reserve <span className="text-slate-500">+3ms</span>
-                </p>
-                <p className="text-slate-400 pl-3">
-                  <span className="text-emerald-400 font-semibold">GET</span> /api/v1/booking/slots <span className="text-slate-500">+1ms</span>
-                </p>
-                <div className="pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
-                  <span>Stack: NestJS · Prisma · Railway</span>
-                  <span className="text-emerald-400 font-bold">Ready on :3000</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
