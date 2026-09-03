@@ -13,6 +13,7 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Separator } from "@/components/ui/separator";
 import SlideTabsDemo from "@/components/ui/slide-tabs-demo";
+import KineticGridDemo from "@/components/ui/kinetic-grid-demo";
 import { Terminal, Code2, ArrowRight, ExternalLink } from "lucide-react";
 
 export default function UIPreviewPage() {
@@ -265,6 +266,16 @@ export default function UIPreviewPage() {
           <div className="p-8 border rounded-xl bg-card flex items-center justify-center">
             <SlideTabsDemo />
           </div>
+        </section>
+
+        {/* 8. Kinetic Grid Background Primitive */}
+        <section className="space-y-4">
+          <SectionHeading
+            badge="Interactive Background"
+            title="KineticGrid Canvas Component"
+            description="Interactive HTML5 canvas background grid that warps toward the pointer and ripples on click."
+          />
+          <KineticGridDemo />
         </section>
       </Container>
     </div>
