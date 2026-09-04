@@ -48,7 +48,7 @@ function Band({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 1.35,
+  lanyardWidth = 0.68,
 }: {
   maxSpeed?: number;
   minSpeed?: number;
@@ -217,11 +217,15 @@ function Band({
   });
 
   curve.curveType = "chordal";
+  curve.curveType = "chordal";
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+
+  const anchorX = isMobile ? 0 : 2.5;
+  const anchorY = isMobile ? 1.0 : 3.6;
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group position={[anchorX, anchorY, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
         <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.1]} />
@@ -280,7 +284,7 @@ function Band({
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={isMobile ? [800, 1600] : [1200, 1200]}
+          resolution={isMobile ? [800, 1600] : [1400, 1400]}
           useMap
           map={texture}
           repeat={[-3, 1]}
@@ -292,28 +296,31 @@ function Band({
 }
 
 export default function Lanyard3D({
-  position = [0, 1.1, 13],
+  position,
   gravity = [0, -40, 0],
   fov = 24,
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 1.35,
+  lanyardWidth = 0.68,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const defaultPosition: [number, number, number] = position || (isMobile ? [0, -0.2, 16] : [0, 0.4, 13]);
+
   return (
-    <div className={`relative w-full h-[620px] sm:h-[700px] lg:h-[760px] flex items-center justify-center select-none ${className}`}>
+    <div className={`relative w-full h-full select-none ${className}`}>
       <Canvas
-        camera={{ position, fov }}
+        key={isMobile ? "mobile" : "desktop"}
+        camera={{ position: defaultPosition, fov }}
         gl={{ alpha: true, antialias: true }}
         className="w-full h-full"
       >
