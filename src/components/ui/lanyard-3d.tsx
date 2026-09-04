@@ -48,7 +48,7 @@ function Band({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 1,
+  lanyardWidth = 1.35,
 }: {
   maxSpeed?: number;
   minSpeed?: number;
@@ -240,7 +240,7 @@ function Band({
         >
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={2.25}
+            scale={2.6}
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
@@ -280,10 +280,10 @@ function Band({
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={isMobile ? [1000, 2000] : [1000, 1000]}
+          resolution={isMobile ? [800, 1600] : [1200, 1200]}
           useMap
           map={texture}
-          repeat={[-4, 1]}
+          repeat={[-3, 1]}
           lineWidth={lanyardWidth}
         />
       </mesh>
@@ -292,13 +292,13 @@ function Band({
 }
 
 export default function Lanyard3D({
-  position = [0, 0, 20],
+  position = [0, 1.1, 13],
   gravity = [0, -40, 0],
   fov = 24,
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 1.05,
+  lanyardWidth = 1.35,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
@@ -311,7 +311,7 @@ export default function Lanyard3D({
   }, []);
 
   return (
-    <div className={`relative w-full h-[520px] sm:h-[600px] flex items-center justify-center select-none ${className}`}>
+    <div className={`relative w-full h-[620px] sm:h-[700px] lg:h-[760px] flex items-center justify-center select-none ${className}`}>
       <Canvas
         camera={{ position, fov }}
         gl={{ alpha: true, antialias: true }}

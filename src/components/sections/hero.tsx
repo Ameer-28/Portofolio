@@ -19,23 +19,23 @@ export function Hero() {
       />
 
       <Container size="lg" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center min-h-[520px]">
-          {/* Left Column: Clean Minimalist Headline & Single CTA (100% Sesuai Referensi Bayu Raja Syah) */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-left">
-            <h1 className="text-3xl sm:text-4xl lg:text-[44px] font-normal text-white leading-snug lg:leading-[1.26] tracking-tight max-w-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 items-center min-h-[580px] lg:min-h-[680px]">
+          {/* Left Column: Clean Minimalist Headline & Single CTA (Ukuran Pas Sesuai Referensi Bayu) */}
+          <div className="lg:col-span-6 space-y-6 sm:space-y-7 text-left py-4">
+            <h1 className="text-xl sm:text-2xl lg:text-[27px] font-normal text-neutral-300 leading-relaxed tracking-tight max-w-md">
               Hello i&apos;m{" "}
-              <strong className="font-extrabold text-white">
+              <strong className="font-extrabold text-white tracking-normal">
                 {profileData.fullName.toUpperCase()}
               </strong>
               , a Backend Developer, NestJS Specialist, and API Engineer
             </h1>
 
-            <div className="pt-1 sm:pt-2">
+            <div className="pt-1">
               <Button
                 variant="primary"
                 size="lg"
                 href="#projects"
-                className="font-semibold text-sm rounded-full px-8 h-12 bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_25px_rgba(255,255,255,0.2)] inline-flex items-center gap-2"
+                className="font-semibold text-xs sm:text-sm rounded-full px-7 h-11 bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] inline-flex items-center gap-2"
               >
                 Portofolio
                 <ArrowRight className="h-4 w-4" />
@@ -43,8 +43,8 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: 3D Interactive Lanyard ID Card (5 cols on desktop) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
+          {/* Right Column: 3D Interactive Lanyard ID Card (6 cols on desktop, prominent & tall) */}
+          <div className="lg:col-span-6 flex flex-col items-center justify-center -my-6 lg:-my-10">
             <InteractiveLanyard />
           </div>
         </div>
