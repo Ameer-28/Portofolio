@@ -15,6 +15,7 @@ import { Separator } from "@/components/ui/separator";
 import SlideTabsDemo from "@/components/ui/slide-tabs-demo";
 import KineticGridDemo from "@/components/ui/kinetic-grid-demo";
 import HandwritingTextDemo from "@/components/ui/handwriting-text-demo";
+import GooeyNavDemo from "@/components/ui/gooey-nav-demo";
 import { Terminal, Code2, ArrowRight, ExternalLink } from "lucide-react";
 
 export default function UIPreviewPage() {
@@ -287,6 +288,16 @@ export default function UIPreviewPage() {
             description="Animated vector glyph stroke drawing with dynamic font parsing."
           />
           <HandwritingTextDemo />
+        </section>
+
+        {/* 10. Gooey Navigation Component */}
+        <section className="space-y-4">
+          <SectionHeading
+            badge="Interactive Navigation"
+            title="GooeyNav Liquid Bubble Navigation Component"
+            description="Liquid gooey filter tabs with dynamic particle explosion transitions."
+          />
+          <GooeyNavDemo />
         </section>
       </Container>
     </div>
