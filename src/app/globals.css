@@ -31,23 +31,23 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #09090b;
+  --background: #fdfdfd;
+  --foreground: #000000;
 
-  --card: #ffffff;
-  --card-foreground: #09090b;
+  --card: #f8f8fa;
+  --card-foreground: #000000;
 
   --popover: #ffffff;
-  --popover-foreground: #09090b;
+  --popover-foreground: #000000;
 
-  --primary: #4f46e5;
+  --primary: #000000;
   --primary-foreground: #ffffff;
 
-  --secondary: #f1f5f9;
-  --secondary-foreground: #0f172a;
+  --secondary: #f0f0f3;
+  --secondary-foreground: #000000;
 
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
+  --muted: #f4f4f7;
+  --muted-foreground: #666670;
 
   --accent: #0284c7;
   --accent-foreground: #ffffff;
@@ -55,39 +55,39 @@
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #4f46e5;
+  --border: #e4e4e8;
+  --input: #e4e4e8;
+  --ring: #000000;
 }
 
 .dark {
-  --background: #080c14;
-  --foreground: #f8fafc;
+  --background: #000000;
+  --foreground: #ffffff;
 
-  --card: #0e1626;
-  --card-foreground: #f8fafc;
+  --card: #0c0c0e;
+  --card-foreground: #ffffff;
 
-  --popover: #0e1626;
-  --popover-foreground: #f8fafc;
+  --popover: #0c0c0e;
+  --popover-foreground: #ffffff;
 
-  --primary: #818cf8;
-  --primary-foreground: #080c14;
+  --primary: #ffffff;
+  --primary-foreground: #000000;
 
-  --secondary: #131f37;
-  --secondary-foreground: #f8fafc;
+  --secondary: #141417;
+  --secondary-foreground: #ffffff;
 
-  --muted: #131f37;
-  --muted-foreground: #94a3b8;
+  --muted: #141417;
+  --muted-foreground: #8e8e99;
 
   --accent: #38bdf8;
-  --accent-foreground: #080c14;
+  --accent-foreground: #000000;
 
   --destructive: #ef4444;
-  --destructive-foreground: #f8fafc;
+  --destructive-foreground: #ffffff;
 
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #818cf8;
+  --border: #1f1f24;
+  --input: #1f1f24;
+  --ring: #ffffff;
 }
 
 * {
@@ -113,17 +113,25 @@ body {
 }
 
 .dark .bg-grid-pattern {
-  background-image: radial-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Glow gradient highlights */
+/* Atmospheric Glow Gradients (Inspired by Bayu Raja Syah's Design System) */
+.glow-radial-hero {
+  background: radial-gradient(50% 50% at 50% 0%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 50%, transparent 80%);
+}
+
+.glow-radial-soft {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+}
+
 .glow-mauve {
-  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.18), transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 70%);
 }
 
 .glow-cyan {
-  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15), transparent 70%);
+  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12), transparent 70%);
 }
 
 /* Accessibility focus ring */

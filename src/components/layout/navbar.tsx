@@ -52,12 +52,12 @@ export function Navbar() {
   return (
     <header className="sticky top-3.5 sm:top-5 z-50 w-full px-3 sm:px-6 pointer-events-none">
       <div className="mx-auto w-full md:w-fit max-w-sm md:max-w-4xl">
-        {/* Floating Capsule Navbar */}
-        <div className="pointer-events-auto rounded-full border border-border/80 bg-background/85 dark:bg-card/85 backdrop-blur-md shadow-xs dark:shadow-md transition-all flex items-center justify-between gap-3 sm:gap-5 px-3.5 sm:px-4 py-1.5 sm:py-2">
+        {/* Floating Capsule Navbar (Bayu Raja Syah Avant-Garde Style) */}
+        <div className="pointer-events-auto rounded-full border border-neutral-200/80 dark:border-white/15 bg-white/90 dark:bg-black/85 backdrop-blur-md shadow-lg dark:shadow-[0_12px_32px_rgba(0,0,0,0.8)] transition-all flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-1.5 sm:py-2">
           {/* Brand */}
           <Link
             href="/"
-            className="font-mono text-xs sm:text-sm font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full px-2.5 py-1"
+            className="font-mono text-xs sm:text-sm font-bold tracking-tight text-foreground hover:opacity-80 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full px-2 py-1"
             onClick={closeMenu}
           >
             {profileData.brandName}
@@ -66,14 +66,14 @@ export function Navbar() {
           {/* Desktop Navigation Links */}
           <nav
             aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-0.5"
+            className="hidden md:flex items-center gap-1"
           >
-            <ul className="flex items-center gap-0.5 text-xs font-medium text-muted-foreground">
+            <ul className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
               {navItems.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="px-3 py-1.5 rounded-full transition-all hover:text-foreground hover:bg-muted/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none"
+                    className="px-3.5 py-1.5 rounded-full transition-all hover:text-foreground hover:bg-neutral-100 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none"
                   >
                     {item.label}
                   </a>
@@ -84,20 +84,20 @@ export function Navbar() {
 
           {/* Divider */}
           <div
-            className="h-4 w-px bg-border/80 hidden md:block"
+            className="h-4 w-px bg-neutral-200 dark:bg-white/15 hidden md:block"
             aria-hidden="true"
           />
 
-          {/* Desktop Actions: Theme Toggle + Download CV */}
-          <div className="hidden md:flex items-center gap-2">
+          {/* Desktop Actions: Theme Toggle + High-contrast Pill Download CV */}
+          <div className="hidden md:flex items-center gap-2.5">
             <ThemeToggle />
             <Button
-              variant="outline"
+              variant="primary"
               size="sm"
               href={profileData.cv.url}
               download
               isExternal
-              className="font-mono text-xs rounded-full px-3.5 h-8 border-border hover:bg-muted"
+              className="font-mono text-xs rounded-full px-4 h-8 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all font-semibold shadow-xs"
             >
               <FileText className="h-3.5 w-3.5 mr-1" />
               Download CV
@@ -126,7 +126,7 @@ export function Navbar() {
             id="mobile-navigation"
             role="region"
             aria-label="Mobile Navigation Menu"
-            className="pointer-events-auto md:hidden mt-2 p-4 rounded-2xl border border-border/80 bg-background/95 dark:bg-card/95 backdrop-blur-lg shadow-xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-150"
+            className="pointer-events-auto md:hidden mt-2 p-4 rounded-2xl border border-neutral-200/80 dark:border-white/15 bg-white/95 dark:bg-black/95 backdrop-blur-xl shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-150"
           >
             <nav aria-label="Mobile Navigation">
               <ul className="flex flex-col space-y-1">
@@ -135,7 +135,7 @@ export function Navbar() {
                     <a
                       href={item.href}
                       onClick={closeMenu}
-                      className="block px-3 py-2 text-sm font-medium text-foreground hover:text-primary hover:bg-muted/60 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="block px-3 py-2 text-sm font-medium text-foreground hover:text-foreground hover:bg-neutral-100 dark:hover:bg-white/10 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </a>
@@ -144,15 +144,15 @@ export function Navbar() {
               </ul>
             </nav>
 
-            <div className="pt-3 border-t border-border/60">
+            <div className="pt-3 border-t border-neutral-200 dark:border-white/10">
               <Button
-                variant="outline"
+                variant="primary"
                 size="md"
                 href={profileData.cv.url}
                 download
                 isExternal
                 onClick={closeMenu}
-                className="w-full justify-center font-mono text-xs rounded-full border-border hover:bg-muted"
+                className="w-full justify-center font-mono text-xs rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 h-9 font-semibold"
               >
                 <FileText className="h-3.5 w-3.5 mr-1.5" />
                 Download CV

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Badge } from "@/components/ui/badge";
-import { Server, Code2, Wrench, Database, ShieldCheck, Terminal } from "lucide-react";
+import { Server, Code2, Wrench, Database, Terminal } from "lucide-react";
 
 export function Skills() {
   const backendSkills = [
@@ -39,7 +39,7 @@ export function Skills() {
     <section
       id="skills"
       aria-label="Keahlian Teknis & Tech Stack"
-      className="py-16 sm:py-24 border-t border-border/60 bg-muted/10 relative"
+      className="py-16 sm:py-24 border-t border-border/60 relative"
     >
       <Container size="lg">
         <SectionHeading
@@ -48,15 +48,15 @@ export function Skills() {
           description="Kompilasi teknologi dan alat kerja yang digunakan secara aktif dalam merancang arsitektur server modular, pemodelan basis data relasional, dan keamanan API."
         />
 
-        {/* Bento Grid Pure Backend Skills Layout */}
+        {/* Bento Grid Pure Backend Skills Layout (Bayu Raja Syah High Contrast Minimalist) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 items-stretch">
           {/* 1. Primary Bento: Backend Architecture & Database (8 cols on lg) */}
-          <div className="lg:col-span-8 rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-primary/50 transition-all group">
+          <div className="lg:col-span-8 rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:border-white/25 transition-all group">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
-                  <div className="h-9 w-9 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <Server className="h-5 w-5" />
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 rounded-xl bg-neutral-100 dark:bg-white/10 border border-neutral-200 dark:border-white/15 flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
+                    <Server className="h-5 w-5 text-foreground" />
                   </div>
                   <div>
                     <h3 className="text-base sm:text-lg font-bold text-foreground">
@@ -67,9 +67,9 @@ export function Skills() {
                     </p>
                   </div>
                 </div>
-                <Badge variant="default" size="sm" className="hidden sm:inline-flex font-mono text-[10px]">
+                <span className="hidden sm:inline-flex rounded-full border border-white/20 bg-white/5 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                   Core Specialization
-                </Badge>
+                </span>
               </div>
 
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed pt-1">
@@ -80,29 +80,27 @@ export function Skills() {
             <div className="pt-6">
               <div className="flex flex-wrap gap-2">
                 {backendSkills.map((skill) => (
-                  <Badge
+                  <span
                     key={skill.name}
-                    variant={skill.isPrimary ? "default" : "secondary"}
-                    size="md"
-                    className={`font-mono text-xs ${
+                    className={`font-mono text-xs px-3.5 py-1.5 rounded-full transition-all ${
                       skill.isPrimary
-                        ? "shadow-xs border border-primary/20"
-                        : "border border-border/70 text-foreground bg-muted/60"
+                        ? "bg-black text-white dark:bg-white dark:text-black font-semibold shadow-xs hover:opacity-90"
+                        : "border border-neutral-300 dark:border-white/15 bg-neutral-100 dark:bg-white/5 text-foreground hover:bg-neutral-200 dark:hover:bg-white/10"
                     }`}
                   >
                     {skill.name}
-                  </Badge>
+                  </span>
                 ))}
               </div>
             </div>
           </div>
 
           {/* 2. Secondary Bento: Languages & Runtime Environments (4 cols on lg) */}
-          <div className="lg:col-span-4 rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-6 sm:p-8 flex flex-col justify-between shadow-xs hover:border-accent/50 transition-all group">
+          <div className="lg:col-span-4 rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md p-6 sm:p-8 flex flex-col justify-between shadow-lg hover:border-white/25 transition-all group">
             <div className="space-y-3">
-              <div className="flex items-center gap-2.5">
-                <div className="h-9 w-9 rounded-xl bg-accent/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                  <Code2 className="h-5 w-5" />
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl bg-neutral-100 dark:bg-white/10 border border-neutral-200 dark:border-white/15 flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
+                  <Code2 className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-foreground">
@@ -122,29 +120,27 @@ export function Skills() {
             <div className="pt-6">
               <div className="flex flex-wrap gap-2">
                 {languageSkills.map((skill) => (
-                  <Badge
+                  <span
                     key={skill.name}
-                    variant={skill.isPrimary ? "default" : "secondary"}
-                    size="md"
-                    className={`font-mono text-xs ${
+                    className={`font-mono text-xs px-3.5 py-1.5 rounded-full transition-all ${
                       skill.isPrimary
-                        ? "shadow-xs border border-accent/20 bg-accent text-accent-foreground"
-                        : "border border-border/70 text-foreground bg-muted/60"
+                        ? "bg-black text-white dark:bg-white dark:text-black font-semibold shadow-xs hover:opacity-90"
+                        : "border border-neutral-300 dark:border-white/15 bg-neutral-100 dark:bg-white/5 text-foreground hover:bg-neutral-200 dark:hover:bg-white/10"
                     }`}
                   >
                     {skill.name}
-                  </Badge>
+                  </span>
                 ))}
               </div>
             </div>
           </div>
 
           {/* 3. Third Bento: Tools, DevOps & Platforms (12 cols on lg) */}
-          <div className="lg:col-span-12 rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs hover:border-border transition-all">
+          <div className="lg:col-span-12 rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-lg hover:border-white/20 transition-all">
             <div className="space-y-2 max-w-xl">
-              <div className="flex items-center gap-2.5">
-                <div className="h-9 w-9 rounded-xl bg-muted/80 border border-border/60 flex items-center justify-center text-foreground shrink-0">
-                  <Wrench className="h-5 w-5 text-primary" />
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl bg-neutral-100 dark:bg-white/10 border border-neutral-200 dark:border-white/15 flex items-center justify-center text-foreground shrink-0">
+                  <Wrench className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-bold text-foreground">
@@ -162,14 +158,16 @@ export function Skills() {
 
             <div className="flex flex-wrap gap-2 md:justify-end">
               {toolsSkills.map((skill) => (
-                <Badge
+                <span
                   key={skill.name}
-                  variant={skill.isPrimary ? "secondary" : "outline"}
-                  size="md"
-                  className="font-mono text-xs border border-border/70 text-foreground bg-muted/60"
+                  className={`font-mono text-xs px-3.5 py-1.5 rounded-full transition-all ${
+                    skill.isPrimary
+                      ? "border border-neutral-300 dark:border-white/20 bg-neutral-200/60 dark:bg-white/10 text-foreground font-medium"
+                      : "border border-neutral-200 dark:border-white/10 bg-neutral-100 dark:bg-white/5 text-muted-foreground"
+                  }`}
                 >
                   {skill.name}
-                </Badge>
+                </span>
               ))}
             </div>
           </div>

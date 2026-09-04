@@ -56,13 +56,14 @@ export function About() {
           description="Konteks pendidikan formal, ketertarikan teknis, dan arah spesialisasi di bidang software engineering."
         />
 
-        {/* Editorial Large Statement (§ 9) */}
-        <div className="mb-10 p-6 sm:p-8 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm">
-          <p className="text-xs font-mono uppercase tracking-widest text-primary font-semibold mb-2 flex items-center gap-1.5">
-            <Sparkles className="h-3.5 w-3.5" />
+        {/* Editorial Large Statement with Ambient Highlight */}
+        <div className="mb-10 p-6 sm:p-8 rounded-2xl border border-border/80 dark:border-white/12 bg-card/70 dark:bg-[#0c0c0e] backdrop-blur-md relative overflow-hidden shadow-lg">
+          <div className="absolute top-0 right-0 w-96 h-96 glow-radial-soft pointer-events-none opacity-40" />
+          <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground font-semibold mb-2 flex items-center gap-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-white" />
             Engineering Statement
           </p>
-          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground leading-snug">
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground leading-snug max-w-3xl">
             Membangun arsitektur server yang andal, scalable, dan type-safe melalui pendekatan rekayasa perangkat lunak modern.
           </h3>
         </div>
@@ -82,19 +83,19 @@ export function About() {
               </p>
               <ul className="space-y-2.5 text-sm text-foreground/90">
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
                   <span>
                     <strong>Type-Safety & Clean Code:</strong> Menjaga struktur kode modular, terdokumentasi, dan bebas inkonsistensi tipe dengan TypeScript.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
                   <span>
                     <strong>Relational Database Integrity:</strong> Mendesain skema basis data terstruktur dan efisien menggunakan Prisma ORM dan PostgreSQL.
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600 mt-0.5 shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400 mt-0.5 shrink-0" />
                   <span>
                     <strong>Continuous Learning:</strong> Terbuka untuk mempelajari standar baru dan siap berkontribusi secara nyata di lingkungan tim profesional.
                   </span>
@@ -105,24 +106,25 @@ export function About() {
 
           {/* Quick Profile Facts Card (5 cols on desktop) */}
           <div className="lg:col-span-5">
-            <Card className="bg-card/70 border-border shadow-sm">
-              <CardHeader className="pb-4">
+            <Card className="bg-card/90 dark:bg-[#0c0c0e] border-border/80 dark:border-white/12 shadow-xl rounded-2xl">
+              <CardHeader className="pb-4 border-b border-border/60 dark:border-white/10">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="text-base font-mono">
+                  <CardTitle className="text-sm font-mono tracking-wider uppercase text-foreground">
                     Profile Snapshot
                   </CardTitle>
-                  <Badge variant="success" dot size="sm">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-0.5 text-[11px] font-mono font-medium text-emerald-400">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                     Open for Internship
-                  </Badge>
+                  </span>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-3.5 pt-0">
+              <CardContent className="space-y-3.5 pt-4">
                 {profileFacts.map((fact) => {
                   const Icon = fact.icon;
                   return (
                     <div
                       key={fact.label}
-                      className="flex items-center justify-between text-xs sm:text-sm py-1.5 border-b border-border/40 last:border-0"
+                      className="flex items-center justify-between text-xs sm:text-sm py-1.5 border-b border-border/40 dark:border-white/5 last:border-0"
                     >
                       <span className="flex items-center gap-2 text-muted-foreground">
                         <Icon className="h-3.5 w-3.5 text-muted-foreground" />

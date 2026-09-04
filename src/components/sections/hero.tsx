@@ -21,9 +21,9 @@ export function Hero() {
       aria-label="Introduction & Profile Overview"
       className="relative pt-12 sm:pt-16 lg:pt-24 pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-grid-pattern"
     >
-      {/* Top Ambient Glow */}
+      {/* Top Ambient Radial Glow (Bayu Raja Syah Atmosphere) */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-80 glow-mauve pointer-events-none opacity-60 dark:opacity-80"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 glow-radial-hero pointer-events-none opacity-80"
         aria-hidden="true"
       />
 
@@ -32,30 +32,31 @@ export function Hero() {
           {/* Left Column: Value Proposition & CTAs (7 cols on desktop) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* 1. Status Eyebrow */}
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="success" dot size="sm" className="font-mono shadow-xs">
+            <div className="flex flex-wrap items-center gap-2.5">
+              <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-xs font-mono font-medium text-emerald-400 backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Open for Internship
-              </Badge>
+              </span>
               <span className="text-xs text-muted-foreground font-mono">
                 {profileData.location}
               </span>
             </div>
 
-            {/* 2. Punchy Main Headline */}
+            {/* 2. Main Headline (Bold, High Contrast Display) */}
             <div className="space-y-2">
               <p className="text-xs sm:text-sm font-mono uppercase tracking-wider text-muted-foreground">
                 Hi, I&apos;m <span className="text-foreground font-semibold">{profileData.fullName}</span> ({profileData.displayName})
               </p>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.12]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground leading-[1.08]">
                 Backend Developer
               </h1>
-              <div className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-0.5">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-1">
+                <span className="text-muted-foreground">
                   Building backend systems that are
                 </span>
                 <HandwritingText
                   words={["scalable.", "modular.", "type-safe.", "production-ready."]}
-                  className="text-emerald-500 dark:text-emerald-400 font-serif"
+                  className="text-white dark:text-white font-serif underline decoration-white/30 underline-offset-4"
                   height="1.18em"
                 />
               </div>
@@ -79,9 +80,9 @@ export function Hero() {
                       key={tech.name}
                       variant="secondary"
                       size="md"
-                      className="border border-border/80 font-mono text-xs text-foreground bg-card/80 hover:border-primary/60 transition-all shadow-2xs"
+                      className="border border-border/80 dark:border-white/10 font-mono text-xs text-foreground bg-card/90 dark:bg-[#121216] hover:border-white/40 transition-all rounded-full px-3.5 py-1 shadow-2xs"
                     >
-                      <Icon className="h-3.5 w-3.5 text-primary mr-1.5" />
+                      <Icon className="h-3.5 w-3.5 text-foreground mr-1.5" />
                       {tech.name}
                     </Badge>
                   );
@@ -89,13 +90,13 @@ export function Hero() {
               </div>
             </div>
 
-            {/* 5. CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            {/* 5. Pill CTAs (Bayu Raja Syah High Contrast Style) */}
+            <div className="pt-3 flex flex-wrap items-center gap-3.5">
               <Button
                 variant="primary"
                 size="lg"
                 href="#projects"
-                className="font-medium text-xs sm:text-sm rounded-full px-6 shadow-md shadow-primary/20 hover:shadow-primary/30 transition-all"
+                className="font-semibold text-xs sm:text-sm rounded-full px-7 h-11 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
               >
                 View Projects
                 <ArrowRight className="h-4 w-4 ml-1.5" />
@@ -107,7 +108,7 @@ export function Hero() {
                 href={profileData.cv.url}
                 download
                 isExternal
-                className="font-mono text-xs sm:text-sm rounded-full px-6 border-border/80 hover:bg-muted/80"
+                className="font-mono text-xs sm:text-sm rounded-full px-6 h-11 border-neutral-300 dark:border-white/20 bg-neutral-100/60 dark:bg-white/5 hover:bg-neutral-200 dark:hover:bg-white/10 text-foreground transition-all"
               >
                 <FileText className="h-4 w-4 mr-1.5" />
                 Download CV
@@ -118,8 +119,8 @@ export function Hero() {
           {/* Right Column: Visual Developer Bento Card & Terminal Simulation (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             {/* Top: Profile Identity Badge Card */}
-            <div className="rounded-2xl border border-border/80 bg-card/90 backdrop-blur-sm p-4 shadow-sm flex items-center gap-4 transition-all hover:border-border">
-              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border border-border/80 shrink-0 bg-muted/40">
+            <div className="rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md p-4 sm:p-5 shadow-lg flex items-center gap-4 transition-all hover:border-white/20">
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border border-border/80 dark:border-white/15 shrink-0 bg-muted/40">
                 {profileData.profileImage.isAvailable ? (
                   <Image
                     src={profileData.profileImage.src}
@@ -130,19 +131,19 @@ export function Hero() {
                     className="object-cover"
                   />
                 ) : (
-                  <div className="h-full w-full flex items-center justify-center font-mono font-bold text-primary">
+                  <div className="h-full w-full flex items-center justify-center font-mono font-bold text-foreground">
                     AM
                   </div>
                 )}
               </div>
               <div className="space-y-1">
                 <div className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                   <p className="font-mono text-xs font-bold text-foreground">
                     {profileData.brandName}
                   </p>
                 </div>
-                <p className="text-sm font-semibold text-foreground">
+                <p className="text-sm font-bold text-foreground">
                   {profileData.fullName}
                 </p>
                 <p className="text-xs font-mono text-muted-foreground">
@@ -152,40 +153,40 @@ export function Hero() {
             </div>
 
             {/* Bottom: Interactive Live NestJS Server Boot Terminal */}
-            <div className="rounded-2xl border border-border/80 bg-[#070b12] dark:bg-[#070b12] text-slate-300 font-mono text-[11px] sm:text-xs shadow-lg overflow-hidden border-t-indigo-500/30">
+            <div className="rounded-2xl border border-border/80 dark:border-white/12 bg-[#08080a] text-neutral-300 font-mono text-[11px] sm:text-xs shadow-2xl overflow-hidden border-t-white/20">
               {/* Terminal Window Header */}
-              <div className="flex items-center justify-between px-3.5 py-2.5 bg-slate-900/90 border-b border-slate-800">
+              <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-900/80 border-b border-white/10">
                 <div className="flex items-center gap-1.5">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
                   <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
                 </div>
-                <span className="text-[10px] text-slate-400 flex items-center gap-1">
-                  <Terminal className="h-3 w-3 text-indigo-400" />
+                <span className="text-[10px] text-neutral-400 flex items-center gap-1">
+                  <Terminal className="h-3 w-3 text-white" />
                   server@ameer.dev: ~
                 </span>
                 <span className="text-[10px] text-emerald-400 font-semibold">200 OK</span>
               </div>
 
               {/* Terminal Logs Content */}
-              <div className="p-3.5 space-y-1.5 text-[11px] leading-relaxed select-none">
-                <p className="text-slate-400">
-                  <span className="text-indigo-400 font-bold">[Nest]</span> Starting Nest application...
+              <div className="p-4 space-y-1.5 text-[11px] leading-relaxed select-none">
+                <p className="text-neutral-400">
+                  <span className="text-white font-bold">[Nest]</span> Starting Nest application...
                 </p>
                 <p className="text-emerald-400 flex items-center gap-1.5">
                   <CheckCircle2 className="h-3 w-3 shrink-0" />
                   <span>PrismaService: PostgreSQL DB Connected</span>
                 </p>
-                <p className="text-slate-300">
+                <p className="text-neutral-300">
                   <span className="text-sky-400">LOG</span> [RoutesResolver] LapanginController:
                 </p>
-                <p className="text-slate-400 pl-3">
-                  <span className="text-amber-400 font-semibold">POST</span> /api/v1/booking/reserve <span className="text-slate-500">+3ms</span>
+                <p className="text-neutral-400 pl-3">
+                  <span className="text-amber-400 font-semibold">POST</span> /api/v1/booking/reserve <span className="text-neutral-500">+3ms</span>
                 </p>
-                <p className="text-slate-400 pl-3">
-                  <span className="text-emerald-400 font-semibold">GET</span> /api/v1/booking/slots <span className="text-slate-500">+1ms</span>
+                <p className="text-neutral-400 pl-3">
+                  <span className="text-emerald-400 font-semibold">GET</span> /api/v1/booking/slots <span className="text-neutral-500">+1ms</span>
                 </p>
-                <div className="pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400">
+                <div className="pt-2 mt-1 border-t border-neutral-800/80 flex items-center justify-between text-[10px] text-neutral-400">
                   <span>Stack: NestJS · Prisma · Railway</span>
                   <span className="text-emerald-400 font-bold">Ready on :3000</span>
                 </div>
