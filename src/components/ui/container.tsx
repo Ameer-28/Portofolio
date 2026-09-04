@@ -19,10 +19,11 @@ const sizeStyles: Record<ContainerSize, string> = {
 export function Container({
   className,
   size = "lg",
-  as: Component = "div",
+  as: Comp = "div",
   children,
   ...props
 }: ContainerProps) {
+  const Component = Comp as any;
   return (
     <Component
       className={cn(
