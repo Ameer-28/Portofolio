@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/layout/theme-toggle";
 import GooeyNav from "@/components/ui/gooey-nav";
 import { profileData } from "@/data/profile";
 import { Menu, X, FileText } from "lucide-react";
@@ -79,7 +78,7 @@ export function Navbar() {
     <header className="sticky top-3.5 sm:top-5 z-50 w-full px-3 sm:px-6 pointer-events-none">
       <div className="mx-auto w-full md:w-fit max-w-sm md:max-w-4xl">
         {/* Floating Capsule Navbar (Bayu Raja Syah Avant-Garde Style) */}
-        <div className="pointer-events-auto rounded-full border border-neutral-200/80 dark:border-white/15 bg-white/90 dark:bg-black/85 backdrop-blur-md shadow-lg dark:shadow-[0_12px_32px_rgba(0,0,0,0.8)] transition-all flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-1.5 sm:py-2 overflow-hidden">
+        <div className="pointer-events-auto rounded-full border border-white/15 bg-black/85 backdrop-blur-md shadow-[0_12px_32px_rgba(0,0,0,0.8)] transition-all flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-1.5 sm:py-2 overflow-hidden">
           {/* Brand */}
           <Link
             href="/"
@@ -109,29 +108,27 @@ export function Navbar() {
 
           {/* Divider */}
           <div
-            className="h-4 w-px bg-neutral-200 dark:bg-white/15 hidden md:block"
+            className="h-4 w-px bg-white/15 hidden md:block"
             aria-hidden="true"
           />
 
-          {/* Desktop Actions: Theme Toggle + High-contrast Pill Download CV */}
+          {/* Desktop Actions: Download CV */}
           <div className="hidden md:flex items-center gap-2.5">
-            <ThemeToggle />
             <Button
               variant="primary"
               size="sm"
               href={profileData.cv.url}
               download
               isExternal
-              className="font-mono text-xs rounded-full px-4 h-8 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all font-semibold shadow-xs"
+              className="font-mono text-xs rounded-full px-4 h-8 bg-white text-black hover:bg-neutral-200 transition-all font-semibold shadow-xs"
             >
               <FileText className="h-3.5 w-3.5 mr-1" />
               Download CV
             </Button>
           </div>
 
-          {/* Mobile Header Controls (Theme Toggle + Menu Button) */}
+          {/* Mobile Header Controls (Menu Button) */}
           <div className="flex items-center gap-1.5 md:hidden">
-            <ThemeToggle />
             <button
               type="button"
               aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -151,7 +148,7 @@ export function Navbar() {
             id="mobile-navigation"
             role="region"
             aria-label="Mobile Navigation Menu"
-            className="pointer-events-auto md:hidden mt-2 p-4 rounded-2xl border border-neutral-200/80 dark:border-white/15 bg-white/95 dark:bg-black/95 backdrop-blur-xl shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-150"
+            className="pointer-events-auto md:hidden mt-2 p-4 rounded-2xl border border-white/15 bg-black/95 backdrop-blur-xl shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95 duration-150"
           >
             <nav aria-label="Mobile Navigation">
               <ul className="flex flex-col space-y-1">
@@ -160,7 +157,7 @@ export function Navbar() {
                     <a
                       href={item.href}
                       onClick={closeMenu}
-                      className="block px-3 py-2 text-sm font-medium text-foreground hover:text-foreground hover:bg-neutral-100 dark:hover:bg-white/10 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      className="block px-3 py-2 text-sm font-medium text-foreground hover:text-foreground hover:bg-white/10 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       {item.label}
                     </a>
@@ -169,7 +166,7 @@ export function Navbar() {
               </ul>
             </nav>
 
-            <div className="pt-3 border-t border-neutral-200 dark:border-white/10">
+            <div className="pt-3 border-t border-white/10">
               <Button
                 variant="primary"
                 size="md"
@@ -177,7 +174,7 @@ export function Navbar() {
                 download
                 isExternal
                 onClick={closeMenu}
-                className="w-full justify-center font-mono text-xs rounded-full bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 h-9 font-semibold"
+                className="w-full justify-center font-mono text-xs rounded-full bg-white text-black hover:bg-neutral-200 h-9 font-semibold"
               >
                 <FileText className="h-3.5 w-3.5 mr-1.5" />
                 Download CV

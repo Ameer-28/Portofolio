@@ -120,7 +120,7 @@ export default function RootLayout({
     <html
       lang="id"
       suppressHydrationWarning
-      className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
+      className={`dark ${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <head>
         <script
@@ -129,7 +129,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased min-h-screen bg-background text-foreground font-sans flex flex-col">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           <SkipToContent />
           <Navbar />
           <main id="main-content" className="flex-1 focus:outline-none">

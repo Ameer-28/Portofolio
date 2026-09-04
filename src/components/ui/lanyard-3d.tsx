@@ -221,9 +221,9 @@ function Band({
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const { width: vpWidth, height: vpHeight } = useThree((state) => state.viewport);
-  const anchorX = isMobile ? 0 : Math.min(4.0, Math.max(3.1, vpWidth * 0.32));
-  const anchorY = isMobile ? 2.0 : vpHeight / 2 + 0.6;
-  const cardScale = isMobile ? 1.8 : 2.05;
+  const anchorX = isMobile ? 0 : Math.min(4.0, Math.max(3.0, vpWidth * 0.3));
+  const anchorY = isMobile ? 2.5 : vpHeight / 2 + 0.8;
+  const cardScale = isMobile ? 2.1 : 2.45;
 
   return (
     <>
@@ -244,10 +244,10 @@ function Band({
           {...segmentProps}
           type={dragged ? "kinematicPosition" : "dynamic"}
         >
-          <CuboidCollider args={[0.65, 0.95, 0.01]} />
+          <CuboidCollider args={[0.75, 1.05, 0.01]} />
           <group
             scale={cardScale}
-            position={[0, -1.0, -0.05]}
+            position={[0, -1.1, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => {
@@ -304,7 +304,7 @@ export default function Lanyard3D({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 0.55,
+  lanyardWidth = 0.62,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
