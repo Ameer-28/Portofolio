@@ -148,12 +148,12 @@ function Band({
   const [hovered, hover] = useState(false);
 
   // Physics joints connecting rope segments and card
-  useRopeJoint(fixed as any, j1 as any, [[0, 0, 0], [0, 0, 0], 0.55]);
-  useRopeJoint(j1 as any, j2 as any, [[0, 0, 0], [0, 0, 0], 0.55]);
-  useRopeJoint(j2 as any, j3 as any, [[0, 0, 0], [0, 0, 0], 0.55]);
+  useRopeJoint(fixed as any, j1 as any, [[0, 0, 0], [0, 0, 0], 0.6]);
+  useRopeJoint(j1 as any, j2 as any, [[0, 0, 0], [0, 0, 0], 0.6]);
+  useRopeJoint(j2 as any, j3 as any, [[0, 0, 0], [0, 0, 0], 0.6]);
   useSphericalJoint(j3 as any, card as any, [
     [0, 0, 0],
-    [0, 1.2, 0],
+    [0, 1.45, 0],
   ]);
 
   useEffect(() => {
@@ -222,32 +222,32 @@ function Band({
   const { width: vpWidth, height: vpHeight } = useThree((state) => state.viewport);
   const { width: sizeW, height: sizeH } = useThree((state) => state.size);
   const anchorX = isMobile ? 0 : Math.min(3.8, Math.max(1.8, vpWidth * 0.28));
-  const anchorY = isMobile ? vpHeight / 2 + 0.2 : vpHeight / 2 + 0.4;
-  const cardScale = isMobile ? 2.05 : 2.4;
+  const anchorY = isMobile ? vpHeight / 2 + 0.3 : vpHeight / 2 + 0.6;
+  const cardScale = isMobile ? 2.4 : 2.95;
 
   return (
     <>
       <group position={[anchorX, anchorY, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[0, -0.55, 0]} ref={j1} {...segmentProps}>
+        <RigidBody position={[0, -0.6, 0]} ref={j1} {...segmentProps}>
           <BallCollider args={[0.08]} />
         </RigidBody>
-        <RigidBody position={[0, -1.1, 0]} ref={j2} {...segmentProps}>
+        <RigidBody position={[0, -1.2, 0]} ref={j2} {...segmentProps}>
           <BallCollider args={[0.08]} />
         </RigidBody>
-        <RigidBody position={[0, -1.65, 0]} ref={j3} {...segmentProps}>
+        <RigidBody position={[0, -1.8, 0]} ref={j3} {...segmentProps}>
           <BallCollider args={[0.08]} />
         </RigidBody>
         <RigidBody
-          position={[0, -2.85, 0]}
+          position={[0, -3.25, 0]}
           ref={card}
           {...segmentProps}
           type={dragged ? "kinematicPosition" : "dynamic"}
         >
-          <CuboidCollider args={[0.75, 1.05, 0.01]} />
+          <CuboidCollider args={[0.92, 1.3, 0.01]} />
           <group
             scale={cardScale}
-            position={[0, -1.1, -0.05]}
+            position={[0, -1.35, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => {
@@ -304,7 +304,7 @@ export default function Lanyard3D({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 0.62,
+  lanyardWidth = 0.78,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
@@ -317,7 +317,7 @@ export default function Lanyard3D({
   }, []);
 
   const defaultPosition: [number, number, number] =
-    position || (isMobile ? [0, -0.05, 14.5] : [0, 0.1, 13.5]);
+    position || (isMobile ? [0, -0.05, 14.5] : [0, 0.1, 13.0]);
 
   return (
     <div className={`relative w-full h-full select-none ${className}`}>
