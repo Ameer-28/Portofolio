@@ -11,6 +11,7 @@ import {
   Server,
   Code2,
   CheckCircle2,
+  Sparkles,
 } from "lucide-react";
 
 export function About() {
@@ -50,10 +51,21 @@ export function About() {
     >
       <Container size="lg">
         <SectionHeading
-          badge="About Me"
+          badge="About"
           title="Latar Belakang & Fokus Rekayasa"
           description="Konteks pendidikan formal, ketertarikan teknis, dan arah spesialisasi di bidang software engineering."
         />
+
+        {/* Editorial Large Statement (§ 9) */}
+        <div className="mb-10 p-6 sm:p-8 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-sm">
+          <p className="text-xs font-mono uppercase tracking-widest text-primary font-semibold mb-2 flex items-center gap-1.5">
+            <Sparkles className="h-3.5 w-3.5" />
+            Engineering Statement
+          </p>
+          <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground leading-snug">
+            Membangun arsitektur server yang andal, scalable, dan type-safe melalui pendekatan rekayasa perangkat lunak modern.
+          </h3>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Narrative Column (7 cols on desktop) */}

@@ -12,6 +12,10 @@ import {
   Server,
   Layers,
   Activity,
+  ArrowRightLeft,
+  Database,
+  Globe,
+  Cpu,
 } from "lucide-react";
 
 export function Projects() {
@@ -29,21 +33,59 @@ export function Projects() {
     >
       <Container size="lg">
         <SectionHeading
-          badge="Featured Projects"
+          badge="Selected Work"
           title="Bukti Rekayasa & Portofolio Proyek"
           description="Koleksi proyek nyata yang mendemonstrasikan perancangan arsitektur backend modular, manajemen basis data relasional, dan integrasi API fungsional."
         />
 
-        {/* 1. Visually Dominant Flagship Pair: Lapangin Ecosystem */}
-        <div className="space-y-4 mb-10">
-          <div className="flex items-center justify-between pb-2 border-b border-border/60">
+        {/* 1. Visually Dominant Flagship Centerpiece: Lapangin Ecosystem (§ 11 & § 12) */}
+        <div className="space-y-6 mb-12">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-border/60">
             <span className="text-xs font-mono uppercase tracking-wider font-semibold text-foreground flex items-center gap-2">
               <Layers className="h-4 w-4 text-primary" />
               Flagship Application Ecosystem — Lapangin Platform & API
             </span>
-            <span className="text-xs font-mono text-muted-foreground hidden sm:inline">
-              Production Deployed
+            <span className="text-xs font-mono text-muted-foreground">
+              Production Deployed · Full-Stack Integration
             </span>
+          </div>
+
+          {/* Architecture Relationship Flow Diagram (§ 15) */}
+          <div className="rounded-2xl border border-border/80 bg-muted/20 p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs font-mono">
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Globe className="h-4 w-4 text-sky-500 shrink-0" />
+              <span>Next.js Web Client</span>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                Vercel
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <span className="h-px w-8 bg-border hidden md:inline-block" />
+              <ArrowRightLeft className="h-3.5 w-3.5 text-primary" />
+              <span className="text-[11px]">JSON / REST API</span>
+              <span className="h-px w-8 bg-border hidden md:inline-block" />
+            </div>
+
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Cpu className="h-4 w-4 text-indigo-500 shrink-0" />
+              <span>NestJS Backend Core</span>
+              <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
+                Railway
+              </span>
+            </div>
+
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <span className="h-px w-8 bg-border hidden md:inline-block" />
+              <ArrowRight className="h-3.5 w-3.5 text-emerald-500" />
+              <span className="text-[11px]">Prisma ORM</span>
+              <span className="h-px w-8 bg-border hidden md:inline-block" />
+            </div>
+
+            <div className="flex items-center gap-2 text-foreground font-semibold">
+              <Database className="h-4 w-4 text-emerald-500 shrink-0" />
+              <span>PostgreSQL DB</span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
@@ -188,7 +230,7 @@ export function Projects() {
           </div>
         </div>
 
-        {/* 2. Subordinate Secondary Projects Grid */}
+        {/* 2. Subordinate Secondary Projects Grid (§ 11) */}
         <div className="space-y-4">
           <div className="flex items-center justify-between pb-2 border-b border-border/60">
             <span className="text-xs font-mono uppercase tracking-wider font-semibold text-foreground flex items-center gap-2">
