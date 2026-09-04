@@ -148,12 +148,12 @@ function Band({
   const [hovered, hover] = useState(false);
 
   // Physics joints connecting rope segments and card
-  useRopeJoint(fixed as any, j1 as any, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j1 as any, j2 as any, [[0, 0, 0], [0, 0, 0], 1]);
-  useRopeJoint(j2 as any, j3 as any, [[0, 0, 0], [0, 0, 0], 1]);
+  useRopeJoint(fixed as any, j1 as any, [[0, 0, 0], [0, 0, 0], 0.55]);
+  useRopeJoint(j1 as any, j2 as any, [[0, 0, 0], [0, 0, 0], 0.55]);
+  useRopeJoint(j2 as any, j3 as any, [[0, 0, 0], [0, 0, 0], 0.55]);
   useSphericalJoint(j3 as any, card as any, [
     [0, 0, 0],
-    [0, 1.45, 0],
+    [0, 1.2, 0],
   ]);
 
   useEffect(() => {
@@ -179,7 +179,7 @@ function Band({
     }
 
     if (fixed.current && card.current) {
-      [j1, j2].forEach((ref) => {
+      [j1, j2, j3].forEach((ref) => {
         if (!ref.current) return;
         if (!ref.current.lerped) {
           ref.current.lerped = new THREE.Vector3().copy(ref.current.translation() as THREE.Vector3);
@@ -195,14 +195,14 @@ function Band({
         );
       });
 
-      if (j3.current && j2.current?.lerped && j1.current?.lerped) {
-        curve.points[0].copy(j3.current.translation() as THREE.Vector3);
+      if (j3.current?.lerped && j2.current?.lerped && j1.current?.lerped && fixed.current) {
+        curve.points[0].copy(j3.current.lerped);
         curve.points[1].copy(j2.current.lerped);
         curve.points[2].copy(j1.current.lerped);
         curve.points[3].copy(fixed.current.translation() as THREE.Vector3);
 
         if (band.current) {
-          (band.current.geometry as any).setPoints(curve.getPoints(isMobile ? 16 : 32));
+          (band.current.geometry as any).setPoints(curve.getPoints(isMobile ? 24 : 32));
         }
       }
 
@@ -216,30 +216,30 @@ function Band({
     }
   });
 
-  curve.curveType = "chordal";
-  curve.curveType = "chordal";
+  curve.curveType = "centripetal";
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const { width: vpWidth, height: vpHeight } = useThree((state) => state.viewport);
-  const anchorX = isMobile ? 0 : Math.min(4.0, Math.max(3.0, vpWidth * 0.3));
-  const anchorY = isMobile ? 2.5 : vpHeight / 2 + 0.8;
-  const cardScale = isMobile ? 2.1 : 2.45;
+  const { width: sizeW, height: sizeH } = useThree((state) => state.size);
+  const anchorX = isMobile ? 0 : Math.min(3.8, Math.max(1.8, vpWidth * 0.28));
+  const anchorY = isMobile ? vpHeight / 2 + 0.2 : vpHeight / 2 + 0.4;
+  const cardScale = isMobile ? 2.05 : 2.4;
 
   return (
     <>
       <group position={[anchorX, anchorY, 0]}>
         <RigidBody ref={fixed} {...segmentProps} type="fixed" />
-        <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
-          <BallCollider args={[0.1]} />
+        <RigidBody position={[0, -0.55, 0]} ref={j1} {...segmentProps}>
+          <BallCollider args={[0.08]} />
         </RigidBody>
-        <RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}>
-          <BallCollider args={[0.1]} />
+        <RigidBody position={[0, -1.1, 0]} ref={j2} {...segmentProps}>
+          <BallCollider args={[0.08]} />
         </RigidBody>
-        <RigidBody position={[1.5, 0, 0]} ref={j3} {...segmentProps}>
-          <BallCollider args={[0.1]} />
+        <RigidBody position={[0, -1.65, 0]} ref={j3} {...segmentProps}>
+          <BallCollider args={[0.08]} />
         </RigidBody>
         <RigidBody
-          position={[2, 0, 0]}
+          position={[0, -2.85, 0]}
           ref={card}
           {...segmentProps}
           type={dragged ? "kinematicPosition" : "dynamic"}
@@ -286,11 +286,11 @@ function Band({
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={isMobile ? [800, 1600] : [1400, 1400]}
+          resolution={[sizeW || 1200, sizeH || 800]}
           useMap
           map={texture}
-          repeat={[-3, 1]}
-          lineWidth={lanyardWidth}
+          repeat={[-2, 1]}
+          lineWidth={isMobile ? lanyardWidth * 0.9 : lanyardWidth}
         />
       </mesh>
     </>
@@ -310,13 +310,14 @@ export default function Lanyard3D({
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const defaultPosition: [number, number, number] = position || (isMobile ? [0, -0.2, 16] : [0, 0.1, 13.5]);
+  const defaultPosition: [number, number, number] =
+    position || (isMobile ? [0, -0.05, 14.5] : [0, 0.1, 13.5]);
 
   return (
     <div className={`relative w-full h-full select-none ${className}`}>
