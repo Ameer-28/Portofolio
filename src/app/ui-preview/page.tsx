@@ -16,6 +16,7 @@ import SlideTabsDemo from "@/components/ui/slide-tabs-demo";
 import KineticGridDemo from "@/components/ui/kinetic-grid-demo";
 import HandwritingTextDemo from "@/components/ui/handwriting-text-demo";
 import GooeyNavDemo from "@/components/ui/gooey-nav-demo";
+import LogoLoopDemo from "@/components/ui/logo-loop-demo";
 import { Terminal, Code2, ArrowRight, ExternalLink } from "lucide-react";
 
 export default function UIPreviewPage() {
@@ -298,6 +299,16 @@ export default function UIPreviewPage() {
             description="Liquid gooey filter tabs with dynamic particle explosion transitions."
           />
           <GooeyNavDemo />
+        </section>
+
+        {/* 11. Infinite Logo Loop Component */}
+        <section className="space-y-4">
+          <SectionHeading
+            badge="Marquee Animation"
+            title="LogoLoop Infinite Ticker Component"
+            description="Smooth infinite looping marquee with hover deceleration, scaling, and edge fade masks."
+          />
+          <LogoLoopDemo />
         </section>
       </Container>
     </div>
