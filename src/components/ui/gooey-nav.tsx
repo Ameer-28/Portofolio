@@ -17,6 +17,8 @@ export interface GooeyNavProps {
   timeVariance?: number;
   colors?: number[];
   initialActiveIndex?: number;
+  activeIndex?: number;
+  onActiveChange?: (index: number) => void;
   className?: string;
 }
 
@@ -29,13 +31,18 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
   timeVariance = 300,
   colors = [1, 2, 3, 1, 2, 3, 1, 4],
   initialActiveIndex = 0,
+  activeIndex: activeIndexProp,
+  onActiveChange,
   className = "",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLUListElement>(null);
   const filterRef = useRef<HTMLSpanElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
-  const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
+
+  const isControlled = activeIndexProp !== undefined;
+  const [internalActiveIndex, setInternalActiveIndex] = useState(initialActiveIndex);
+  const activeIndex = isControlled ? activeIndexProp : internalActiveIndex;
 
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
@@ -114,11 +121,14 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
   };
 
   const handleClick = (e: React.MouseEvent<HTMLElement>, index: number) => {
-    const liEl = e.currentTarget;
+    const targetLi = (e.currentTarget.closest("li") as HTMLElement) || e.currentTarget;
     if (activeIndex === index) return;
 
-    setActiveIndex(index);
-    updateEffectPosition(liEl);
+    if (!isControlled) {
+      setInternalActiveIndex(index);
+    }
+    onActiveChange?.(index);
+    updateEffectPosition(targetLi);
 
     if (filterRef.current) {
       const particles = filterRef.current.querySelectorAll(".particle");
@@ -140,7 +150,7 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>, index: number) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      const liEl = e.currentTarget.parentElement;
+      const liEl = (e.currentTarget.closest("li") as HTMLElement) || e.currentTarget;
       if (liEl) {
         handleClick({ currentTarget: liEl } as any, index);
       }

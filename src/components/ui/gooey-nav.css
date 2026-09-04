@@ -25,10 +25,46 @@
     1.001 85%,
     1
   );
+
+  /* Light mode defaults */
+  --gooey-nav-text: #52525b;
+  --gooey-nav-text-hover: #09090b;
+  --gooey-nav-text-active: #ffffff;
+  --gooey-pill-bg: #09090b;
+  --gooey-filter-bg: #ffffff;
+  --gooey-blend-mode: darken;
+  --color-1: #09090b;
+  --color-2: #18181b;
+  --color-3: #27272a;
+  --color-4: #3f3f46;
+}
+
+:is(.dark) {
+  --gooey-nav-text: rgba(255, 255, 255, 0.7);
+  --gooey-nav-text-hover: #ffffff;
+  --gooey-nav-text-active: #09090b;
+  --gooey-pill-bg: #ffffff;
+  --gooey-filter-bg: #000000;
+  --gooey-blend-mode: lighten;
   --color-1: #ffffff;
-  --color-2: #f0f0f5;
-  --color-3: #d1d1db;
-  --color-4: #e4e4e7;
+  --color-2: #f4f4f5;
+  --color-3: #e4e4e7;
+  --color-4: #d4d4d8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --gooey-nav-text: rgba(255, 255, 255, 0.7);
+    --gooey-nav-text-hover: #ffffff;
+    --gooey-nav-text-active: #09090b;
+    --gooey-pill-bg: #ffffff;
+    --gooey-filter-bg: #000000;
+    --gooey-blend-mode: lighten;
+    --color-1: #ffffff;
+    --color-2: #f4f4f5;
+    --color-3: #e4e4e7;
+    --color-4: #d4d4d8;
+  }
 }
 
 .gooey-nav-container {
@@ -42,7 +78,7 @@
 }
 
 .gooey-nav--navbar nav ul {
-  gap: 0.4em;
+  gap: 0.35em;
   padding: 0;
 }
 
@@ -72,8 +108,7 @@
   margin: 0;
   position: relative;
   z-index: 3;
-  color: white;
-  text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
+  color: var(--gooey-nav-text);
 }
 
 .gooey-nav-container nav ul li {
@@ -85,7 +120,11 @@
     color 0.3s ease,
     box-shadow 0.3s ease;
   box-shadow: 0 0 0.5px 1.5px transparent;
-  color: white;
+  color: var(--gooey-nav-text);
+}
+
+.gooey-nav-container nav ul li:hover {
+  color: var(--gooey-nav-text-hover);
 }
 
 .gooey-nav-container nav ul li a {
@@ -94,15 +133,15 @@
 }
 
 .gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
-  box-shadow: 0 0 0.5px 1.5px white;
+  box-shadow: 0 0 0.5px 1.5px currentColor;
 }
 
 .gooey-nav-container nav ul li::after {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 10px;
-  background: white;
+  border-radius: 9999px;
+  background: var(--gooey-pill-bg);
   opacity: 0;
   transform: scale(0);
   transition: all 0.3s ease;
@@ -110,7 +149,7 @@
 }
 
 .gooey-nav-container nav ul li.active {
-  color: black;
+  color: var(--gooey-nav-text-active);
   text-shadow: none;
 }
 
@@ -133,17 +172,17 @@
 }
 
 .gooey-nav-container .effect.text {
-  color: white;
+  color: var(--gooey-nav-text);
   transition: color 0.3s ease;
 }
 
 .gooey-nav-container .effect.text.active {
-  color: black;
+  color: var(--gooey-nav-text-active);
 }
 
 .gooey-nav-container .effect.filter {
   filter: blur(7px) contrast(100) blur(0);
-  mix-blend-mode: lighten;
+  mix-blend-mode: var(--gooey-blend-mode);
 }
 
 .gooey-nav-container .effect.filter::before {
@@ -151,14 +190,14 @@
   position: absolute;
   inset: -75px;
   z-index: -2;
-  background: black;
+  background: var(--gooey-filter-bg);
 }
 
 .gooey-nav-container .effect.filter::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: white;
+  background: var(--gooey-pill-bg);
   transform: scale(0);
   opacity: 0;
   z-index: -1;

@@ -19,7 +19,7 @@ export function TechMarquee() {
   const logos: LogoItem[] = [
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Server className="h-4 w-4 text-rose-400" />
           <span>NestJS</span>
         </div>
@@ -28,7 +28,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Code2 className="h-4 w-4 text-blue-400" />
           <span>TypeScript</span>
         </div>
@@ -37,7 +37,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Database className="h-4 w-4 text-sky-400" />
           <span>PostgreSQL</span>
         </div>
@@ -46,7 +46,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Layers className="h-4 w-4 text-emerald-400" />
           <span>Prisma ORM</span>
         </div>
@@ -55,7 +55,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Cpu className="h-4 w-4 text-red-400" />
           <span>Redis</span>
         </div>
@@ -64,7 +64,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Boxes className="h-4 w-4 text-cyan-400" />
           <span>Docker</span>
         </div>
@@ -73,7 +73,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Globe className="h-4 w-4 text-white" />
           <span>Next.js</span>
         </div>
@@ -82,7 +82,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Terminal className="h-4 w-4 text-amber-400" />
           <span>REST API</span>
         </div>
@@ -91,7 +91,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <ShieldCheck className="h-4 w-4 text-emerald-400" />
           <span>JWT & OAuth</span>
         </div>
@@ -100,7 +100,7 @@ export function TechMarquee() {
     },
     {
       node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
+        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 dark:bg-neutral-900/90 border border-neutral-200/90 dark:border-white/10 text-neutral-800 dark:text-white font-mono text-xs font-semibold hover:border-neutral-400 dark:hover:border-white/30 transition-colors shadow-2xs">
           <Zap className="h-4 w-4 text-yellow-400" />
           <span>CI/CD Automation</span>
         </div>

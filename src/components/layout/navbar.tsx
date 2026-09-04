@@ -23,6 +23,31 @@ const navItems: NavItem[] = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [activeSection, setActiveSection] = React.useState<string>("about");
+
+  // Scroll spy to keep active tab aligned with page section
+  React.useEffect(() => {
+    const sectionIds = ["about", "skills", "projects", "experience", "contact"];
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 220;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollPosition) {
+          setActiveSection(sectionIds[i]);
+          return;
+        }
+      }
+      setActiveSection("about");
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const activeIndex = Math.max(
+    0,
+    navItems.findIndex((item) => item.href === `#${activeSection}`)
+  );
 
   // Close mobile menu on Escape key
   React.useEffect(() => {
@@ -69,7 +94,12 @@ export function Navbar() {
             <GooeyNav
               items={navItems}
               className="gooey-nav--navbar"
-              animationTime={500}
+              activeIndex={activeIndex}
+              onActiveChange={(idx) => {
+                const target = navItems[idx]?.href.replace("#", "") || "about";
+                setActiveSection(target);
+              }}
+              animationTime={450}
               particleCount={12}
               particleDistances={[50, 10]}
               particleR={80}
