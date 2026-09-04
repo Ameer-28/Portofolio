@@ -1,9 +1,9 @@
 import * as React from "react";
-import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { HandwritingText } from "@/components/ui/handwriting-text";
+import { InteractiveLanyard } from "@/components/ui/interactive-lanyard";
 import { profileData } from "@/data/profile";
 import { ArrowRight, FileText, Code2, Server, Database, Terminal, CheckCircle2 } from "lucide-react";
 
@@ -19,7 +19,7 @@ export function Hero() {
     <section
       id="home"
       aria-label="Introduction & Profile Overview"
-      className="relative pt-12 sm:pt-16 lg:pt-24 pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-grid-pattern"
+      className="relative pt-8 sm:pt-14 lg:pt-20 pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-grid-pattern"
     >
       {/* Top Ambient Radial Glow (Bayu Raja Syah Atmosphere) */}
       <div
@@ -28,7 +28,7 @@ export function Hero() {
       />
 
       <Container size="lg" className="relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Value Proposition & CTAs (7 cols on desktop) */}
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* 1. Status Eyebrow */}
@@ -116,82 +116,9 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Visual Developer Bento Card & Terminal Simulation (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Top: Profile Identity Badge Card */}
-            <div className="rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md p-4 sm:p-5 shadow-lg flex items-center gap-4 transition-all hover:border-white/20">
-              <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-xl overflow-hidden border border-border/80 dark:border-white/15 shrink-0 bg-muted/40">
-                {profileData.profileImage.isAvailable ? (
-                  <Image
-                    src={profileData.profileImage.src}
-                    alt={`${profileData.fullName} — ${profileData.primaryRole}`}
-                    fill
-                    sizes="80px"
-                    priority
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="h-full w-full flex items-center justify-center font-mono font-bold text-foreground">
-                    AM
-                  </div>
-                )}
-              </div>
-              <div className="space-y-1">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <p className="font-mono text-xs font-bold text-foreground">
-                    {profileData.brandName}
-                  </p>
-                </div>
-                <p className="text-sm font-bold text-foreground">
-                  {profileData.fullName}
-                </p>
-                <p className="text-xs font-mono text-muted-foreground">
-                  SMK Telkom Malang (2024–2027)
-                </p>
-              </div>
-            </div>
-
-            {/* Bottom: Interactive Live NestJS Server Boot Terminal */}
-            <div className="rounded-2xl border border-border/80 dark:border-white/12 bg-[#08080a] text-neutral-300 font-mono text-[11px] sm:text-xs shadow-2xl overflow-hidden border-t-white/20">
-              {/* Terminal Window Header */}
-              <div className="flex items-center justify-between px-4 py-2.5 bg-neutral-900/80 border-b border-white/10">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-                </div>
-                <span className="text-[10px] text-neutral-400 flex items-center gap-1">
-                  <Terminal className="h-3 w-3 text-white" />
-                  server@ameer.dev: ~
-                </span>
-                <span className="text-[10px] text-emerald-400 font-semibold">200 OK</span>
-              </div>
-
-              {/* Terminal Logs Content */}
-              <div className="p-4 space-y-1.5 text-[11px] leading-relaxed select-none">
-                <p className="text-neutral-400">
-                  <span className="text-white font-bold">[Nest]</span> Starting Nest application...
-                </p>
-                <p className="text-emerald-400 flex items-center gap-1.5">
-                  <CheckCircle2 className="h-3 w-3 shrink-0" />
-                  <span>PrismaService: PostgreSQL DB Connected</span>
-                </p>
-                <p className="text-neutral-300">
-                  <span className="text-sky-400">LOG</span> [RoutesResolver] LapanginController:
-                </p>
-                <p className="text-neutral-400 pl-3">
-                  <span className="text-amber-400 font-semibold">POST</span> /api/v1/booking/reserve <span className="text-neutral-500">+3ms</span>
-                </p>
-                <p className="text-neutral-400 pl-3">
-                  <span className="text-emerald-400 font-semibold">GET</span> /api/v1/booking/slots <span className="text-neutral-500">+1ms</span>
-                </p>
-                <div className="pt-2 mt-1 border-t border-neutral-800/80 flex items-center justify-between text-[10px] text-neutral-400">
-                  <span>Stack: NestJS · Prisma · Railway</span>
-                  <span className="text-emerald-400 font-bold">Ready on :3000</span>
-                </div>
-              </div>
-            </div>
+          {/* Right Column: Interactive Lanyard ID Card (5 cols on desktop) */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center pt-4 lg:pt-0">
+            <InteractiveLanyard />
           </div>
         </div>
       </Container>
