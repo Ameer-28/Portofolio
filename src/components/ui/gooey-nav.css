@@ -35,6 +35,29 @@
   position: relative;
 }
 
+/* Compact styling for floating Navbar */
+.gooey-nav--navbar {
+  display: flex;
+  align-items: center;
+}
+
+.gooey-nav--navbar nav ul {
+  gap: 0.4em;
+  padding: 0;
+}
+
+.gooey-nav--navbar nav ul li a {
+  padding: 0.35em 0.85em;
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.02em;
+}
+
+.gooey-nav--navbar .effect.filter::before {
+  inset: -12px;
+  border-radius: 9999px;
+}
+
 .gooey-nav-container nav {
   display: flex;
   position: relative;

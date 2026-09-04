@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
+import GooeyNav from "@/components/ui/gooey-nav";
 import { profileData } from "@/data/profile";
 import { Menu, X, FileText } from "lucide-react";
 
@@ -63,24 +64,18 @@ export function Navbar() {
             {profileData.brandName}
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav
-            aria-label="Main Navigation"
-            className="hidden md:flex items-center gap-1"
-          >
-            <ul className="flex items-center gap-1 text-xs font-medium text-muted-foreground">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="px-3.5 py-1.5 rounded-full transition-all hover:text-foreground hover:bg-neutral-100 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring select-none"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Desktop Navigation with GooeyNav */}
+          <div className="hidden md:flex items-center">
+            <GooeyNav
+              items={navItems}
+              className="gooey-nav--navbar"
+              animationTime={500}
+              particleCount={12}
+              particleDistances={[50, 10]}
+              particleR={80}
+              colors={[1, 2, 3, 1, 4]}
+            />
+          </div>
 
           {/* Divider */}
           <div
