@@ -39,8 +39,8 @@ export function Hero() {
       )}
 
       {/* ─── FOREGROUND CONTENT ─── */}
-      <Container size="lg" className="relative z-20 w-full">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+      <Container size="lg" className="relative z-20 w-full pointer-events-none">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pointer-events-none">
           <div className="max-w-md lg:max-w-lg space-y-6 sm:space-y-7 text-center md:text-left pointer-events-auto py-4 md:py-8">
             <h1 className="text-xl sm:text-2xl lg:text-[27px] font-normal text-neutral-300 leading-relaxed tracking-tight">
               Hello i&apos;m{" "}
@@ -55,7 +55,7 @@ export function Hero() {
                 variant="primary"
                 size="lg"
                 href="#projects"
-                className="font-semibold text-xs sm:text-sm rounded-full px-7 h-11 bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] inline-flex items-center gap-2"
+                className="font-semibold text-xs sm:text-sm rounded-full px-7 h-11 bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] inline-flex items-center gap-2 pointer-events-auto"
               >
                 Portofolio
                 <ArrowRight className="h-4 w-4" />
