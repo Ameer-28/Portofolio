@@ -79,7 +79,7 @@ export function Navbar() {
     <header className="sticky top-3.5 sm:top-5 z-50 w-full px-3 sm:px-6 pointer-events-none">
       <div className="mx-auto w-full md:w-fit max-w-sm md:max-w-4xl">
         {/* Floating Capsule Navbar (Bayu Raja Syah Avant-Garde Style) */}
-        <div className="pointer-events-auto rounded-full border border-neutral-200/80 dark:border-white/15 bg-white/90 dark:bg-black/85 backdrop-blur-md shadow-lg dark:shadow-[0_12px_32px_rgba(0,0,0,0.8)] transition-all flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-1.5 sm:py-2">
+        <div className="pointer-events-auto rounded-full border border-neutral-200/80 dark:border-white/15 bg-white/90 dark:bg-black/85 backdrop-blur-md shadow-lg dark:shadow-[0_12px_32px_rgba(0,0,0,0.8)] transition-all flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-1.5 sm:py-2 overflow-hidden">
           {/* Brand */}
           <Link
             href="/"

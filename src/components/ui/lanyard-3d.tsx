@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Canvas, extend, useFrame } from "@react-three/fiber";
+import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, useTexture, Environment, Lightformer } from "@react-three/drei";
 import {
   BallCollider,
@@ -220,8 +220,10 @@ function Band({
   curve.curveType = "chordal";
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
-  const anchorX = isMobile ? 0 : 2.5;
-  const anchorY = isMobile ? 1.0 : 3.6;
+  const { width: vpWidth, height: vpHeight } = useThree((state) => state.viewport);
+  const anchorX = isMobile ? 0 : Math.min(4.0, Math.max(3.1, vpWidth * 0.32));
+  const anchorY = isMobile ? 2.0 : vpHeight / 2 + 0.6;
+  const cardScale = isMobile ? 1.8 : 2.05;
 
   return (
     <>
@@ -242,10 +244,10 @@ function Band({
           {...segmentProps}
           type={dragged ? "kinematicPosition" : "dynamic"}
         >
-          <CuboidCollider args={[0.8, 1.125, 0.01]} />
+          <CuboidCollider args={[0.65, 0.95, 0.01]} />
           <group
-            scale={2.6}
-            position={[0, -1.2, -0.05]}
+            scale={cardScale}
+            position={[0, -1.0, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => {
@@ -302,7 +304,7 @@ export default function Lanyard3D({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 0.68,
+  lanyardWidth = 0.55,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
@@ -314,7 +316,7 @@ export default function Lanyard3D({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const defaultPosition: [number, number, number] = position || (isMobile ? [0, -0.2, 16] : [0, 0.4, 13]);
+  const defaultPosition: [number, number, number] = position || (isMobile ? [0, -0.2, 16] : [0, 0.1, 13.5]);
 
   return (
     <div className={`relative w-full h-full select-none ${className}`}>

@@ -10,7 +10,7 @@ export function Hero() {
     <section
       id="home"
       aria-label="Introduction & Profile Overview"
-      className="relative min-h-[640px] sm:min-h-[720px] lg:min-h-[820px] flex items-center overflow-hidden bg-grid-pattern py-12 lg:py-0"
+      className="relative min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden bg-grid-pattern py-12 lg:py-0"
     >
       {/* Top Ambient Radial Glow (Bayu Raja Syah Atmosphere) */}
       <div

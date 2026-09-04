@@ -69,6 +69,7 @@
 
 .gooey-nav-container {
   position: relative;
+  isolation: isolate;
 }
 
 /* Compact styling for floating Navbar */
@@ -87,11 +88,6 @@
   font-size: 0.75rem;
   font-family: var(--font-mono, monospace);
   letter-spacing: 0.02em;
-}
-
-.gooey-nav--navbar .effect.filter::before {
-  inset: -12px;
-  border-radius: 9999px;
 }
 
 .gooey-nav-container nav {
@@ -181,16 +177,11 @@
 }
 
 .gooey-nav-container .effect.filter {
-  filter: blur(7px) contrast(100) blur(0);
-  mix-blend-mode: var(--gooey-blend-mode);
+  filter: url(#gooey-nav-filter);
 }
 
 .gooey-nav-container .effect.filter::before {
-  content: '';
-  position: absolute;
-  inset: -75px;
-  z-index: -2;
-  background: var(--gooey-filter-bg);
+  display: none !important;
 }
 
 .gooey-nav-container .effect.filter::after {
@@ -201,7 +192,7 @@
   transform: scale(0);
   opacity: 0;
   z-index: -1;
-  border-radius: 100vw;
+  border-radius: 9999px;
 }
 
 .gooey-nav-container .effect.active::after {

@@ -84,7 +84,7 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
         particle.style.setProperty("--end-y", `${p.end[1]}px`);
         particle.style.setProperty("--time", `${p.time}ms`);
         particle.style.setProperty("--scale", `${p.scale}`);
-        particle.style.setProperty("--color", `var(--color-${p.color}, white)`);
+        particle.style.setProperty("--color", `var(--gooey-pill-bg, white)`);
         particle.style.setProperty("--rotate", `${p.rotate}deg`);
 
         point.classList.add("point");
@@ -178,6 +178,23 @@ export const GooeyNav: React.FC<GooeyNavProps> = ({
 
   return (
     <div className={`gooey-nav-container ${className}`} ref={containerRef}>
+      <svg
+        className="pointer-events-none absolute w-0 h-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <defs>
+          <filter id="gooey-nav-filter" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (
