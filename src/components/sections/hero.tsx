@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { HandwritingText } from "@/components/ui/handwriting-text";
 import { profileData } from "@/data/profile";
 import { ArrowRight, FileText, Code2, Server, Database, Terminal, CheckCircle2 } from "lucide-react";
 
@@ -41,16 +42,23 @@ export function Hero() {
             </div>
 
             {/* 2. Punchy Main Headline */}
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <p className="text-xs sm:text-sm font-mono uppercase tracking-wider text-muted-foreground">
                 Hi, I&apos;m <span className="text-foreground font-semibold">{profileData.fullName}</span> ({profileData.displayName})
               </p>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground leading-[1.12]">
                 Backend Developer
               </h1>
-              <p className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-indigo-500 to-accent">
-                Specializing in Scalable APIs & Relational Databases
-              </p>
+              <div className="text-lg sm:text-2xl lg:text-3xl font-bold tracking-tight text-foreground flex flex-wrap items-baseline gap-x-2 gap-y-1 pt-0.5">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground">
+                  Building backend systems that are
+                </span>
+                <HandwritingText
+                  words={["scalable.", "modular.", "type-safe.", "production-ready."]}
+                  className="text-emerald-500 dark:text-emerald-400 font-serif"
+                  height="1.18em"
+                />
+              </div>
             </div>
 
             {/* 3. Verified Positioning Statement */}
