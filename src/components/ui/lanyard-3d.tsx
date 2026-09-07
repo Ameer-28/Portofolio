@@ -48,7 +48,7 @@ function Band({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 0.68,
+  lanyardWidth = 0.36,
 }: {
   maxSpeed?: number;
   minSpeed?: number;
@@ -70,11 +70,11 @@ function Band({
   const rot = useMemo(() => new THREE.Vector3(), []);
   const dir = useMemo(() => new THREE.Vector3(), []);
 
-  const segmentProps = useMemo(
+  const segmentProps: any = useMemo(
     () => ({
-      type: "dynamic" as const,
+      type: "dynamic",
       canSleep: true,
-      colliders: false as const,
+      colliders: false,
       angularDamping: 4,
       linearDamping: 4,
     }),
@@ -147,13 +147,26 @@ function Band({
   const [dragged, drag] = useState<THREE.Vector3 | false>(false);
   const [hovered, hover] = useState(false);
 
+  const { width: vpWidth, height: vpHeight } = useThree((state) => state.viewport);
+  const { width: sizeW, height: sizeH } = useThree((state) => state.size);
+  const anchorX = isMobile ? 0 : Math.min(3.8, Math.max(1.8, vpWidth * 0.28));
+  const anchorY = isMobile ? vpHeight / 2 + 0.3 : vpHeight / 2 + 0.6;
+  const cardScale = isMobile ? 2.4 : 2.95;
+
+  // Exact attachment calculations from card.glb geometry:
+  // Card mesh center: Y = 0.5229
+  // Clip loop opening center: Y = 1.19, Z = 0
+  // Relative offset from card center: 1.19 - 0.5229 = 0.6671
+  const clipYAnchor = 0.6671 * cardScale;
+  const cardInitialY = -1.8 - clipYAnchor;
+
   // Physics joints connecting rope segments and card
   useRopeJoint(fixed as any, j1 as any, [[0, 0, 0], [0, 0, 0], 0.6]);
   useRopeJoint(j1 as any, j2 as any, [[0, 0, 0], [0, 0, 0], 0.6]);
   useRopeJoint(j2 as any, j3 as any, [[0, 0, 0], [0, 0, 0], 0.6]);
   useSphericalJoint(j3 as any, card as any, [
     [0, 0, 0],
-    [0, 1.45, 0],
+    [0, clipYAnchor, 0],
   ]);
 
   useEffect(() => {
@@ -195,8 +208,8 @@ function Band({
         );
       });
 
-      if (j3.current?.lerped && j2.current?.lerped && j1.current?.lerped && fixed.current) {
-        curve.points[0].copy(j3.current.lerped);
+      if (j3.current && j2.current?.lerped && j1.current?.lerped && fixed.current) {
+        curve.points[0].copy(j3.current.translation() as THREE.Vector3);
         curve.points[1].copy(j2.current.lerped);
         curve.points[2].copy(j1.current.lerped);
         curve.points[3].copy(fixed.current.translation() as THREE.Vector3);
@@ -219,12 +232,6 @@ function Band({
   curve.curveType = "centripetal";
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
-  const { width: vpWidth, height: vpHeight } = useThree((state) => state.viewport);
-  const { width: sizeW, height: sizeH } = useThree((state) => state.size);
-  const anchorX = isMobile ? 0 : Math.min(3.8, Math.max(1.8, vpWidth * 0.28));
-  const anchorY = isMobile ? vpHeight / 2 + 0.3 : vpHeight / 2 + 0.6;
-  const cardScale = isMobile ? 2.4 : 2.95;
-
   return (
     <>
       <group position={[anchorX, anchorY, 0]}>
@@ -239,15 +246,15 @@ function Band({
           <BallCollider args={[0.08]} />
         </RigidBody>
         <RigidBody
-          position={[0, -3.25, 0]}
+          position={[0, cardInitialY, 0]}
           ref={card}
           {...segmentProps}
           type={dragged ? "kinematicPosition" : "dynamic"}
         >
-          <CuboidCollider args={[0.92, 1.3, 0.01]} />
+          <CuboidCollider args={[0.3582 * cardScale, 0.5000 * cardScale, 0.01]} />
           <group
             scale={cardScale}
-            position={[0, -1.35, -0.05]}
+            position={[0, -0.5229 * cardScale, 0]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
             onPointerUp={(e: any) => {
@@ -304,7 +311,7 @@ export default function Lanyard3D({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 0.78,
+  lanyardWidth = 0.36,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
