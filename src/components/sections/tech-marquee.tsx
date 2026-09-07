@@ -3,123 +3,93 @@
 import React from "react";
 import LogoLoop, { type LogoItem } from "@/components/ui/logo-loop";
 import {
-  Server,
-  Code2,
-  Database,
-  Layers,
-  Terminal,
-  Cpu,
-  Boxes,
-  Globe,
-  ShieldCheck,
-  Zap,
-} from "lucide-react";
+  SiNestjs,
+  SiTypescript,
+  SiNodedotjs,
+  SiPostgresql,
+  SiPrisma,
+  SiRedis,
+  SiDocker,
+  SiNextdotjs,
+  SiPostman,
+  SiSwagger,
+  SiGithub,
+  SiLinux,
+  SiGit,
+  SiTailwindcss,
+} from "react-icons/si";
 
 export function TechMarquee() {
   const logos: LogoItem[] = [
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Server className="h-4 w-4 text-rose-400" />
-          <span>NestJS</span>
-        </div>
-      ),
-      title: "NestJS Framework",
+      node: <SiNestjs className="h-9 w-9 text-neutral-400 hover:text-[#E0234E] transition-colors" />,
+      title: "NestJS",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Code2 className="h-4 w-4 text-blue-400" />
-          <span>TypeScript</span>
-        </div>
-      ),
+      node: <SiTypescript className="h-9 w-9 text-neutral-400 hover:text-[#3178C6] transition-colors" />,
       title: "TypeScript",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Database className="h-4 w-4 text-sky-400" />
-          <span>PostgreSQL</span>
-        </div>
-      ),
-      title: "PostgreSQL Database",
+      node: <SiNodedotjs className="h-9 w-9 text-neutral-400 hover:text-[#5FA04E] transition-colors" />,
+      title: "Node.js",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Layers className="h-4 w-4 text-emerald-400" />
-          <span>Prisma ORM</span>
-        </div>
-      ),
-      title: "Prisma ORM",
+      node: <SiPostgresql className="h-9 w-9 text-neutral-400 hover:text-[#4169E1] transition-colors" />,
+      title: "PostgreSQL",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Cpu className="h-4 w-4 text-red-400" />
-          <span>Redis</span>
-        </div>
-      ),
-      title: "Redis Cache",
+      node: <SiPrisma className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
+      title: "Prisma",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Boxes className="h-4 w-4 text-cyan-400" />
-          <span>Docker</span>
-        </div>
-      ),
-      title: "Docker Containerization",
+      node: <SiRedis className="h-9 w-9 text-neutral-400 hover:text-[#DC382D] transition-colors" />,
+      title: "Redis",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Globe className="h-4 w-4 text-white" />
-          <span>Next.js</span>
-        </div>
-      ),
-      title: "Next.js Fullstack",
+      node: <SiDocker className="h-9 w-9 text-neutral-400 hover:text-[#2496ED] transition-colors" />,
+      title: "Docker",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Terminal className="h-4 w-4 text-amber-400" />
-          <span>REST API</span>
-        </div>
-      ),
-      title: "REST Architecture",
+      node: <SiNextdotjs className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
+      title: "Next.js",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <ShieldCheck className="h-4 w-4 text-emerald-400" />
-          <span>JWT & OAuth</span>
-        </div>
-      ),
-      title: "Security & Auth",
+      node: <SiPostman className="h-9 w-9 text-neutral-400 hover:text-[#FF6C37] transition-colors" />,
+      title: "Postman",
     },
     {
-      node: (
-        <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-neutral-900/90 border border-white/10 text-white font-mono text-xs font-semibold hover:border-white/30 transition-colors shadow-2xs">
-          <Zap className="h-4 w-4 text-yellow-400" />
-          <span>CI/CD Automation</span>
-        </div>
-      ),
-      title: "Automated Deployment",
+      node: <SiSwagger className="h-9 w-9 text-neutral-400 hover:text-[#85EA2D] transition-colors" />,
+      title: "Swagger",
+    },
+    {
+      node: <SiGithub className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
+      title: "GitHub",
+    },
+    {
+      node: <SiLinux className="h-9 w-9 text-neutral-400 hover:text-[#FCC624] transition-colors" />,
+      title: "Linux",
+    },
+    {
+      node: <SiGit className="h-9 w-9 text-neutral-400 hover:text-[#F05032] transition-colors" />,
+      title: "Git",
+    },
+    {
+      node: <SiTailwindcss className="h-9 w-9 text-neutral-400 hover:text-[#06B6D4] transition-colors" />,
+      title: "Tailwind CSS",
     },
   ];
 
   return (
     <section
       aria-label="Core Backend Technologies Ticker"
-      className="w-full border-y border-white/10 bg-[#070709] py-4 sm:py-5 overflow-hidden relative select-none"
+      className="w-full border-y border-white/10 bg-[#070709] py-5 sm:py-6 overflow-hidden relative select-none"
     >
       <LogoLoop
         logos={logos}
-        speed={55}
+        speed={48}
         direction="left"
-        logoHeight={36}
-        gap={20}
+        logoHeight={40}
+        gap={36}
         hoverSpeed={0}
         scaleOnHover
         fadeOut
@@ -130,3 +100,4 @@ export function TechMarquee() {
 }
 
 export default TechMarquee;
+

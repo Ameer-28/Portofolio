@@ -3,7 +3,6 @@
 import * as React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import GooeyNav from "@/components/ui/gooey-nav";
 import { profileData } from "@/data/profile";
 import { Menu, X, FileText } from "lucide-react";
 
@@ -43,11 +42,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const activeIndex = Math.max(
-    0,
-    navItems.findIndex((item) => item.href === `#${activeSection}`)
-  );
-
   // Close mobile menu on Escape key
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -77,7 +71,7 @@ export function Navbar() {
   return (
     <header className="sticky top-3.5 sm:top-5 z-50 w-full px-3 sm:px-6 pointer-events-none">
       <div className="mx-auto w-full md:w-fit max-w-sm md:max-w-4xl">
-        {/* Floating Capsule Navbar (Bayu Raja Syah Avant-Garde Style) */}
+        {/* Floating Capsule Navbar */}
         <div className="pointer-events-auto rounded-full border border-white/15 bg-black/85 backdrop-blur-md shadow-[0_12px_32px_rgba(0,0,0,0.8)] transition-all flex items-center justify-between gap-3 sm:gap-6 px-4 sm:px-5 py-1.5 sm:py-2 overflow-hidden">
           {/* Brand */}
           <Link
@@ -88,23 +82,25 @@ export function Navbar() {
             {profileData.brandName}
           </Link>
 
-          {/* Desktop Navigation with GooeyNav */}
-          <div className="hidden md:flex items-center">
-            <GooeyNav
-              items={navItems}
-              className="gooey-nav--navbar"
-              activeIndex={activeIndex}
-              onActiveChange={(idx) => {
-                const target = navItems[idx]?.href.replace("#", "") || "about";
-                setActiveSection(target);
-              }}
-              animationTime={450}
-              particleCount={12}
-              particleDistances={[50, 10]}
-              particleR={80}
-              colors={[1, 2, 3, 1, 4]}
-            />
-          </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
+            {navItems.map((item) => {
+              const isActive = item.href === `#${activeSection}`;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                    isActive
+                      ? "bg-white/15 text-white"
+                      : "text-neutral-400 hover:text-white hover:bg-white/8"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
 
           {/* Divider */}
           <div
