@@ -274,17 +274,23 @@ function Band({
                 map={cardMap}
                 map-anisotropy={16}
                 clearcoat={isMobile ? 0 : 1}
-                clearcoatRoughness={0.15}
-                roughness={0.75}
-                metalness={0.1}
+                clearcoatRoughness={0.12}
+                roughness={0.45}
+                metalness={0.12}
               />
             </mesh>
             <mesh
               geometry={nodes.clip.geometry}
               material={materials.metal}
-              material-roughness={0.3}
+              material-roughness={0.2}
+              material-metalness={0.9}
             />
-            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+            <mesh
+              geometry={nodes.clamp.geometry}
+              material={materials.metal}
+              material-roughness={0.2}
+              material-metalness={0.9}
+            />
           </group>
         </RigidBody>
       </group>
@@ -296,7 +302,7 @@ function Band({
           resolution={[sizeW || 1200, sizeH || 800]}
           useMap
           map={texture}
-          repeat={[-2, 1]}
+          repeat={[-3.2, 1]}
           lineWidth={isMobile ? lanyardWidth * 0.9 : lanyardWidth}
         />
       </mesh>
@@ -311,7 +317,7 @@ export default function Lanyard3D({
   frontImage = "/images/id-card-front.png",
   backImage = "/images/id-card-back.png",
   lanyardImage = "/assets/lanyard/lanyard_amin.png",
-  lanyardWidth = 0.36,
+  lanyardWidth = 0.65,
   className = "",
 }: Lanyard3DProps) {
   const [isMobile, setIsMobile] = useState(false);
