@@ -6,17 +6,16 @@ import {
   SiNestjs,
   SiTypescript,
   SiNodedotjs,
+  SiExpress,
   SiPostgresql,
   SiPrisma,
   SiRedis,
   SiDocker,
-  SiNextdotjs,
+  SiNginx,
   SiPostman,
   SiSwagger,
-  SiGithub,
   SiLinux,
   SiGit,
-  SiTailwindcss,
 } from "react-icons/si";
 
 export function TechMarquee() {
@@ -34,12 +33,16 @@ export function TechMarquee() {
       title: "Node.js",
     },
     {
+      node: <SiExpress className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
+      title: "Express.js",
+    },
+    {
       node: <SiPostgresql className="h-9 w-9 text-neutral-400 hover:text-[#4169E1] transition-colors" />,
       title: "PostgreSQL",
     },
     {
       node: <SiPrisma className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
-      title: "Prisma",
+      title: "Prisma ORM",
     },
     {
       node: <SiRedis className="h-9 w-9 text-neutral-400 hover:text-[#DC382D] transition-colors" />,
@@ -50,8 +53,8 @@ export function TechMarquee() {
       title: "Docker",
     },
     {
-      node: <SiNextdotjs className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
-      title: "Next.js",
+      node: <SiNginx className="h-9 w-9 text-neutral-400 hover:text-[#009639] transition-colors" />,
+      title: "Nginx",
     },
     {
       node: <SiPostman className="h-9 w-9 text-neutral-400 hover:text-[#FF6C37] transition-colors" />,
@@ -62,20 +65,12 @@ export function TechMarquee() {
       title: "Swagger",
     },
     {
-      node: <SiGithub className="h-9 w-9 text-neutral-400 hover:text-white transition-colors" />,
-      title: "GitHub",
-    },
-    {
       node: <SiLinux className="h-9 w-9 text-neutral-400 hover:text-[#FCC624] transition-colors" />,
       title: "Linux",
     },
     {
       node: <SiGit className="h-9 w-9 text-neutral-400 hover:text-[#F05032] transition-colors" />,
       title: "Git",
-    },
-    {
-      node: <SiTailwindcss className="h-9 w-9 text-neutral-400 hover:text-[#06B6D4] transition-colors" />,
-      title: "Tailwind CSS",
     },
   ];
 
@@ -86,10 +81,10 @@ export function TechMarquee() {
     >
       <LogoLoop
         logos={logos}
-        speed={48}
+        speed={45}
         direction="left"
         logoHeight={40}
-        gap={36}
+        gap={64}
         hoverSpeed={0}
         scaleOnHover
         fadeOut
@@ -100,4 +95,5 @@ export function TechMarquee() {
 }
 
 export default TechMarquee;
+
 
