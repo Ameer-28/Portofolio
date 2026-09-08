@@ -3,45 +3,28 @@
 import * as React from "react";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
-import { InteractiveLanyard } from "@/components/ui/interactive-lanyard";
+import { ProfileCard } from "@/components/ui/profile-card";
 import { profileData } from "@/data/profile";
 import { ArrowRight } from "lucide-react";
 
 export function Hero() {
-  const [isMobile, setIsMobile] = React.useState(false);
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
   return (
     <section
       id="home"
       aria-label="Introduction & Profile Overview"
-      className="relative min-h-[580px] sm:min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden bg-grid-pattern py-8 md:py-12 lg:py-0"
+      className="relative min-h-screen md:min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden bg-grid-pattern py-10 md:py-12 lg:py-16"
     >
-      {/* Top Ambient Radial Glow (Bayu Raja Syah Atmosphere) */}
+      {/* Top Ambient Radial Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 glow-radial-hero pointer-events-none opacity-80"
         aria-hidden="true"
       />
 
-      {/* ─── DESKTOP FULLSCREEN 3D LANYARD CANVAS (>= 768px) ─── */}
-      {mounted && !isMobile && (
-        <div className="absolute inset-0 w-full h-full z-10 pointer-events-auto">
-          <InteractiveLanyard />
-        </div>
-      )}
+      <Container size="lg" className="relative z-10 w-full">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-8 lg:gap-16">
 
-      {/* ─── FOREGROUND CONTENT ─── */}
-      <Container size="lg" className="relative z-20 w-full pointer-events-none">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pointer-events-none">
-          <div className="max-w-md lg:max-w-lg space-y-6 sm:space-y-7 text-center md:text-left pointer-events-auto py-4 md:py-8">
+          {/* ─── Left: text content ─── */}
+          <div className="max-w-md lg:max-w-lg space-y-6 sm:space-y-7 text-center md:text-left py-4 md:py-8 w-full">
             <h1 className="text-xl sm:text-2xl lg:text-[27px] font-normal text-neutral-300 leading-relaxed tracking-tight">
               Hello i&apos;m{" "}
               <strong className="font-extrabold text-white tracking-normal">
@@ -55,7 +38,7 @@ export function Hero() {
                 variant="primary"
                 size="lg"
                 href="#projects"
-                className="font-semibold text-xs sm:text-sm rounded-full px-7 h-11 bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] inline-flex items-center gap-2 pointer-events-auto"
+                className="font-semibold text-xs sm:text-sm rounded-full px-7 h-11 bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] inline-flex items-center gap-2"
               >
                 Portofolio
                 <ArrowRight className="h-4 w-4" />
@@ -63,12 +46,29 @@ export function Hero() {
             </div>
           </div>
 
-          {/* ─── MOBILE DEDICATED 3D LANYARD STAGE (< 768px: Below Text) ─── */}
-          {mounted && isMobile && (
-            <div className="w-full h-[420px] relative pointer-events-auto mt-2">
-              <InteractiveLanyard />
-            </div>
-          )}
+          {/* ─── Right/Top: Profile Card ─── */}
+          <div className="flex-shrink-0 flex items-center justify-center w-full md:w-auto">
+            <ProfileCard
+              avatarUrl={profileData.profileImage.src}
+              miniAvatarUrl={profileData.profileImage.src}
+              name="Muhammad Amin"
+              title={profileData.primaryRole}
+              handle={profileData.displayName.toLowerCase()}
+              status={profileData.currentStatus}
+              contactText="Contact"
+              showUserInfo={false}
+              detailsPosition="bottom"
+              enableTilt={true}
+              enableMobileTilt={false}
+              behindGlowEnabled={true}
+              behindGlowColor="rgba(56, 189, 248, 0.55)"
+              onContactClick={() => {
+                const el = document.getElementById("contact");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+          </div>
+
         </div>
       </Container>
     </section>

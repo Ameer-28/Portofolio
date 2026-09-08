@@ -5,6 +5,7 @@ import { SkipToContent } from "@/components/layout/skip-to-content";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { PixelSnow } from "@/components/ui/pixel-snow";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ameer.dev";
@@ -130,12 +131,40 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen bg-background text-foreground font-sans flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
-          <SkipToContent />
-          <Navbar />
-          <main id="main-content" className="flex-1 focus:outline-none">
-            {children}
-          </main>
-          <Footer />
+          {/* PixelSnow full-page background */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "fixed",
+              inset: 0,
+              zIndex: 0,
+              pointerEvents: "none",
+            }}
+          >
+            <PixelSnow
+              color="#ffffff"
+              flakeSize={0.012}
+              minFlakeSize={1.25}
+              pixelResolution={200}
+              speed={1.0}
+              depthFade={10}
+              farPlane={20}
+              brightness={0.9}
+              gamma={0.4545}
+              density={0.28}
+              variant="square"
+              direction={125}
+            />
+          </div>
+          {/* Page content sits above the background */}
+          <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+            <SkipToContent />
+            <Navbar />
+            <main id="main-content" className="flex-1 focus:outline-none">
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
