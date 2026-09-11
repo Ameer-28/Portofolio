@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import * as React from "react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -36,6 +34,7 @@ export function Projects() {
 
         <MagicBento
           cards={bentoCards}
+          gridClassName="card-grid--projects"
           enableStars={true}
           enableSpotlight={true}
           enableBorderGlow={true}
