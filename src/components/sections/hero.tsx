@@ -14,7 +14,6 @@ export function Hero() {
       aria-label="Introduction & Profile Overview"
       className="relative min-h-screen md:min-h-[640px] lg:min-h-[720px] flex items-center overflow-hidden bg-grid-pattern py-10 md:py-12 lg:py-16"
     >
-      {/* Top Ambient Radial Glow */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-96 glow-radial-hero pointer-events-none opacity-80"
         aria-hidden="true"

@@ -21,6 +21,7 @@ export interface BentoCardData {
 
 export interface MagicBentoProps {
   cards: BentoCardData[];
+  gridClassName?: string;
   enableStars?: boolean;
   enableSpotlight?: boolean;
   enableBorderGlow?: boolean;
@@ -310,6 +311,7 @@ function GlobalSpotlight({
 
 export function MagicBento({
   cards,
+  gridClassName = "",
   enableStars = true,
   enableSpotlight = true,
   enableBorderGlow = true,
@@ -353,7 +355,7 @@ export function MagicBento({
         />
       )}
 
-      <div className="card-grid bento-section" ref={gridRef}>
+      <div className={`card-grid bento-section ${gridClassName}`} ref={gridRef}>
         {cards.map((card, i) => {
           const cardStyle: React.CSSProperties = {
             backgroundColor: card.color ?? "#120F17",

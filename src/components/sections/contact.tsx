@@ -1,183 +1,242 @@
 "use client";
 
 import * as React from "react";
+import { useMemo, useRef, useEffect, useCallback } from "react";
+import Image from "next/image";
+import { gsap } from "gsap";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Button } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/ui/icons";
 import { profileData } from "@/data/profile";
-import { Mail, FileText, ArrowUpRight, MapPin, Copy, Check } from "lucide-react";
+import { Clock, Copy, Check, FileText, Mail, MapPin, ArrowUpRight } from "lucide-react";
+
+const GLOW_COLOR = "255,255,255";
+const PARTICLE_COUNT = 8;
+
+function createParticle(x: number, y: number) {
+  const el = document.createElement("div");
+  el.style.cssText = `position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(${GLOW_COLOR},1);box-shadow:0 0 6px rgba(${GLOW_COLOR},0.6);pointer-events:none;z-index:100;left:${x}px;top:${y}px;`;
+  return el;
+}
 
 export function Contact() {
   const [copied, setCopied] = React.useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const particlesRef = useRef<HTMLElement[]>([]);
+  const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const isHoveredRef = useRef(false);
 
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(profileData.social.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const timeText = useMemo(() => {
+    const now = new Date();
+    const h = now.getHours();
+    const m = now.getMinutes().toString().padStart(2, "0");
+    const hour12 = ((h + 11) % 12) + 1;
+    const ampm = h >= 12 ? "PM" : "AM";
+    return `${hour12}:${m} ${ampm}`;
+  }, []);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(profileData.social.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch { /* ignore */ }
   };
 
-  const professionalProfiles = [
-    {
-      name: "GitHub",
-      handle: "Ameer-28",
-      url: profileData.social.github,
-      icon: GithubIcon,
-      description: "Lihat repositori dan arsitektur source code backend.",
-    },
-    {
-      name: "LinkedIn",
-      handle: "Muhammad Amin Murtadho",
-      url: profileData.social.linkedin,
-      icon: LinkedinIcon,
-      description: "Profil profesional, verifikasi kredensial & koneksi karir.",
-    },
-    {
-      name: "Instagram",
-      handle: "@aameeerr__",
-      url: profileData.social.instagram || "https://www.instagram.com/aameeerr__/",
-      icon: InstagramIcon,
-      description: "Update keseharian & aktivitas personal.",
-    },
+  const clearParticles = useCallback(() => {
+    timeoutsRef.current.forEach(clearTimeout);
+    timeoutsRef.current = [];
+    particlesRef.current.forEach((p) =>
+      gsap.to(p, { scale: 0, opacity: 0, duration: 0.3, onComplete: () => p.parentNode?.removeChild(p) })
+    );
+    particlesRef.current = [];
+  }, []);
+
+  const spawnParticles = useCallback(() => {
+    const card = cardRef.current;
+    if (!card) return;
+    const { width, height } = card.getBoundingClientRect();
+    Array.from({ length: PARTICLE_COUNT }).forEach((_, i) => {
+      const id = setTimeout(() => {
+        if (!isHoveredRef.current || !cardRef.current) return;
+        const clone = createParticle(Math.random() * width, Math.random() * height);
+        cardRef.current.appendChild(clone);
+        particlesRef.current.push(clone);
+        gsap.fromTo(clone, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(1.7)" });
+        gsap.to(clone, { x: (Math.random() - 0.5) * 100, y: (Math.random() - 0.5) * 100, duration: 2 + Math.random() * 2, ease: "none", repeat: -1, yoyo: true });
+        gsap.to(clone, { opacity: 0.3, duration: 1.5, ease: "power2.inOut", repeat: -1, yoyo: true });
+      }, i * 100);
+      timeoutsRef.current.push(id);
+    });
+  }, []);
+
+  // Spotlight glow on mouse move
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const onMove = (e: MouseEvent) => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty("--glow-x", `${x}%`);
+      card.style.setProperty("--glow-y", `${y}%`);
+      card.style.setProperty("--glow-intensity", "1");
+    };
+
+    const onEnter = () => {
+      isHoveredRef.current = true;
+      spawnParticles();
+    };
+
+    const onLeave = () => {
+      isHoveredRef.current = false;
+      clearParticles();
+      card.style.setProperty("--glow-intensity", "0");
+    };
+
+    card.addEventListener("mousemove", onMove);
+    card.addEventListener("mouseenter", onEnter);
+    card.addEventListener("mouseleave", onLeave);
+    return () => {
+      card.removeEventListener("mousemove", onMove);
+      card.removeEventListener("mouseenter", onEnter);
+      card.removeEventListener("mouseleave", onLeave);
+      clearParticles();
+    };
+  }, [spawnParticles, clearParticles]);
+
+  const socialLinks = [
+    { name: "GitHub",    handle: "@Ameer-28",       url: profileData.social.github,    icon: GithubIcon },
+    { name: "LinkedIn",  handle: "Muhammad Amin",   url: profileData.social.linkedin,  icon: LinkedinIcon },
+    { name: "Instagram", handle: "@aameeerr__",     url: profileData.social.instagram, icon: InstagramIcon },
   ];
 
   return (
     <section
       id="contact"
-      aria-label="Kontak & Unduh CV"
+      aria-label="Kontak"
       className="py-16 sm:py-24 border-t border-border/60 relative"
     >
-      <Container size="lg">
+      <Container size="xl">
         <SectionHeading
           badge="Get in Touch"
           title="Mari Terhubung & Berkolaborasi"
-          description="Terbuka untuk peluang magang/internship rekayasa backend, kolaborasi teknis, maupun diskusi profesional."
+          description="Terbuka untuk peluang magang, kolaborasi teknis, maupun diskusi profesional."
         />
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* 1. Primary Contact Conversion Card (Bayu Raja Syah Minimalist Style) */}
-          <div className="rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md p-6 sm:p-10 shadow-2xl hover:border-white/25 transition-all space-y-6">
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border/60 dark:border-white/10">
-              <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-0.5 text-[11px] font-mono font-medium text-emerald-400">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+        {/* Single wide bento-style card */}
+        <div
+          ref={cardRef}
+          className="relative overflow-hidden rounded-[20px] border border-white/10 bg-[#100e16] text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)]"
+          style={{
+            "--glow-x": "50%",
+            "--glow-y": "50%",
+            "--glow-intensity": "0",
+            "--glow-radius": "400px",
+          } as React.CSSProperties}
+        >
+          {/* Border glow overlay */}
+          <div
+            className="pointer-events-none absolute inset-0 rounded-[20px] z-10"
+            style={{
+              padding: "1px",
+              background: `radial-gradient(var(--glow-radius, 400px) circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(${GLOW_COLOR}, calc(var(--glow-intensity, 0) * 0.5)) 0%, rgba(${GLOW_COLOR}, calc(var(--glow-intensity, 0) * 0.2)) 30%, transparent 60%)`,
+              WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+            }}
+          />
+
+          <div className="flex flex-col lg:flex-row items-stretch divide-y lg:divide-y-0 lg:divide-x divide-white/8">
+
+            {/* ── Col 1: Profile ── */}
+            <div className="flex items-center gap-5 p-6 lg:p-8 lg:min-w-[260px] lg:max-w-[300px]">
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full ring-2 ring-white/15">
+                <Image
+                  src={profileData.profileImage.src}
+                  alt={profileData.displayName}
+                  fill sizes="56px"
+                  className="object-cover"
+                />
+              </div>
+              <div className="min-w-0 space-y-1.5">
+                <p className="font-bold text-sm leading-tight">{profileData.fullName}</p>
+                <p className="text-xs text-white/50">{profileData.primaryRole}</p>
+                <div className="flex items-center gap-1.5 text-[10px] font-mono text-white/40">
+                  <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse inline-block" />
                   Open for Internship
-                </span>
-                <span className="text-xs font-mono text-muted-foreground flex items-center gap-1">
-                  <MapPin className="h-3 w-3" />
-                  {profileData.location}
-                </span>
+                </div>
               </div>
-              <span className="text-xs font-mono text-muted-foreground">
-                SMK Telkom Malang (RPL)
-              </span>
             </div>
 
-            <div className="space-y-2">
-              <h3 className="text-2xl sm:text-4xl font-extrabold text-foreground tracking-tight leading-tight">
-                Let&apos;s Build Something Meaningful.
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl">
-                Saya siap berkontribusi dalam perancangan arsitektur backend modular, pembuatan REST API terstruktur, dan pemodelan database relasional di lingkungan tim profesional Anda.
-              </p>
+            {/* ── Col 2: Info ── */}
+            <div className="flex flex-col justify-center gap-1.5 p-6 lg:p-8 text-[11px] font-mono text-white/40 lg:min-w-[200px]">
+              <div className="flex items-center gap-2">
+                <Clock className="h-3.5 w-3.5 shrink-0" />
+                {timeText}
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="h-3.5 w-3.5 shrink-0" />
+                {profileData.location}
+              </div>
+              <div className="flex items-center gap-2 break-all">
+                <Mail className="h-3.5 w-3.5 shrink-0" />
+                {profileData.social.email}
+              </div>
             </div>
 
-            {/* Direct Email Display with 1-Click Copy */}
-            <div className="p-3.5 sm:p-4 rounded-xl bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Mail className="h-4 w-4 text-foreground shrink-0" />
-                <span className="hidden sm:inline">Direct Email:</span>
-                <span className="font-mono font-semibold text-foreground select-all">
-                  {profileData.social.email}
-                </span>
-              </div>
-
+            {/* ── Col 3: Actions ── */}
+            <div className="flex flex-col sm:flex-row lg:flex-col justify-center gap-2.5 p-6 lg:p-8">
+              <a
+                href={`mailto:${profileData.social.email}`}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/8 hover:bg-white/15 transition-colors text-sm font-medium whitespace-nowrap"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Mail className="h-4 w-4 shrink-0" />
+                Kirim Email
+              </a>
               <button
                 type="button"
-                onClick={handleCopyEmail}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono bg-white dark:bg-white/10 border border-neutral-200 dark:border-white/15 hover:border-white/40 text-foreground transition-all cursor-pointer select-none"
+                onClick={(e) => { e.stopPropagation(); handleCopy(); }}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/8 hover:bg-white/15 transition-colors text-sm font-medium cursor-pointer whitespace-nowrap"
               >
-                {copied ? (
-                  <>
-                    <Check className="h-3.5 w-3.5 text-emerald-400" />
-                    <span className="text-emerald-400 font-semibold">Tersalin!</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span>Salin Email</span>
-                  </>
-                )}
+                {copied
+                  ? <><Check className="h-4 w-4 shrink-0" />Copied!</>
+                  : <><Copy className="h-4 w-4 shrink-0" />Copy Email</>}
               </button>
-            </div>
-
-            {/* Action Buttons (High Contrast Pill Buttons) */}
-            <div className="pt-2 flex flex-wrap items-center gap-3.5">
-              <Button
-                variant="primary"
-                size="lg"
-                href={`mailto:${profileData.social.email}`}
-                className="text-xs sm:text-sm font-semibold rounded-full px-7 h-11 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)]"
-              >
-                <Mail className="h-4 w-4 mr-2" />
-                Hubungi via Email
-              </Button>
-
-              <Button
-                variant="outline"
-                size="lg"
+              <a
                 href={profileData.cv.url}
                 download
-                isExternal
-                className="text-xs sm:text-sm font-mono rounded-full px-6 h-11 border-neutral-300 dark:border-white/20 bg-neutral-100/60 dark:bg-white/5 hover:bg-neutral-200 dark:hover:bg-white/10 text-foreground transition-all"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black hover:bg-neutral-200 transition-colors text-sm font-semibold whitespace-nowrap"
+                onClick={(e) => e.stopPropagation()}
               >
-                <FileText className="h-4 w-4 mr-2" />
+                <FileText className="h-4 w-4 shrink-0" />
                 Download CV
-              </Button>
+              </a>
             </div>
-          </div>
 
-          {/* 2. Professional & Social Profiles Grid */}
-          <div className="space-y-3">
-            <p className="text-xs font-mono uppercase tracking-wider text-muted-foreground text-center">
-              Profil Profesional & Kanal Lainnya
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {professionalProfiles.map((profile) => {
-                const Icon = profile.icon;
+            {/* ── Col 4: Social links ── */}
+            <div className="flex flex-wrap lg:flex-col justify-center gap-2 p-6 lg:p-8 flex-1">
+              {socialLinks.map((s) => {
+                const Icon = s.icon;
                 return (
                   <a
-                    key={profile.name}
-                    href={profile.url}
+                    key={s.name}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-5 rounded-2xl border border-border/80 dark:border-white/12 bg-card/90 dark:bg-[#0c0c0e] backdrop-blur-md hover:border-white/30 transition-all flex flex-col justify-between space-y-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring shadow-md"
-                    aria-label={`${profile.name} — ${profile.handle}`}
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/25 transition-all text-xs text-white/60"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="h-9 w-9 rounded-xl bg-neutral-100 dark:bg-white/10 border border-neutral-200 dark:border-white/15 flex items-center justify-center text-foreground group-hover:scale-105 transition-transform">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <p className="font-bold text-sm text-foreground">
-                        {profile.name}
-                      </p>
-                      <p className="text-xs font-mono text-muted-foreground">
-                        {profile.handle}
-                      </p>
-                    </div>
-
-                    <p className="text-[11px] text-muted-foreground leading-relaxed pt-2 border-t border-border/50 dark:border-white/10">
-                      {profile.description}
-                    </p>
+                    <Icon className="h-3.5 w-3.5 shrink-0" />
+                    {s.handle}
+                    <ArrowUpRight className="h-3 w-3 opacity-40 ml-auto" />
                   </a>
                 );
               })}
             </div>
+
           </div>
         </div>
       </Container>

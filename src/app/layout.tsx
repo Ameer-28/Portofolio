@@ -6,6 +6,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { PixelSnow } from "@/components/ui/pixel-snow";
+import { LoadingScreen } from "@/components/ui/loading-screen";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ameer.dev";
@@ -131,6 +132,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen bg-background text-foreground font-sans flex flex-col">
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+          <LoadingScreen />
           {/* PixelSnow full-page background */}
           <div
             aria-hidden="true"

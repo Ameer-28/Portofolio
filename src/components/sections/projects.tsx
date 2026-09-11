@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import * as React from "react";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
