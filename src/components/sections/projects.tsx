@@ -29,7 +29,7 @@ export function Projects() {
         <SectionHeading
           badge="Selected Work"
           title="Bukti Rekayasa & Portofolio Proyek"
-          description="Koleksi proyek nyata yang mendemonstrasikan perancangan arsitektur backend modular, manajemen basis data relasional, dan integrasi API fungsional."
+          description="Proyek-proyek nyata yang menunjukkan kemampuan merancang API, mengelola database, dan mengimplementasikan logika bisnis dari awal hingga deployment."
         />
 
         <MagicBento

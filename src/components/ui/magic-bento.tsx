@@ -17,6 +17,8 @@ export interface BentoCardData {
   technologies?: string[];
   /** Extra content rendered below description */
   extra?: ReactNode;
+  /** Optional icon rendered in card header */
+  icon?: ReactNode;
 }
 
 export interface MagicBentoProps {
@@ -367,9 +369,14 @@ export function MagicBento({
             <>
               {/* Header row */}
               <div className="magic-bento-card__header">
-                {card.label && (
-                  <span className="magic-bento-card__label">{card.label}</span>
-                )}
+                <div className="magic-bento-card__header-left">
+                  {card.icon && (
+                    <span className="magic-bento-card__icon">{card.icon}</span>
+                  )}
+                  {card.label && (
+                    <span className="magic-bento-card__label">{card.label}</span>
+                  )}
+                </div>
                 {card.liveUrl && (
                   <span className="magic-bento-card__live">
                     <span className="magic-bento-card__live-dot" />

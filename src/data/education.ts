@@ -7,12 +7,12 @@ export const educationData: EducationData = {
   status: "Current Student (Siswa Aktif)",
   location: "Malang, Indonesia",
   relevantLearning: [
-    "Software Engineering Principles",
-    "NestJS & TypeScript Backend Architecture",
-    "Relational Database Modeling (PostgreSQL & Prisma ORM)",
-    "Node.js & REST API Design",
-    "Java Programming",
-    "Backend Security & Authentication (Passport JWT & Bcrypt)",
+    "Prinsip Rekayasa Perangkat Lunak & SDLC",
+    "Algoritma, Struktur Data & Pemrograman Berorientasi Objek (OOP)",
+    "Perancangan Basis Data Relasional & Normalisasi SQL",
+    "Pengembangan Web & Arsitektur Client-Server",
+    "Dasar Pemrograman Java & Ekosistem Web Modern",
+    "Version Control & Kolaborasi Rekayasa Perangkat Lunak (Git)",
   ],
 };
 

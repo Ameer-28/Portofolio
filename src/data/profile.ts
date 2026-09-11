@@ -15,14 +15,14 @@ export const profileData: ProfileData = {
     database: "Prisma & PostgreSQL",
   },
   tagline:
-    "Fokus merancang arsitektur backend yang andal, performa API tinggi, dan sistem database yang efisien.",
+    "Membangun sistem backend yang andal, scalable, dan terdokumentasi dengan baik.",
   aboutBio: [
-    "Saya adalah siswa jurusan Rekayasa Perangkat Lunak (RPL) di SMK Telkom Malang (2024–2027) dengan fokus spesialisasi penuh pada Backend Development dan Rekayasa Perangkat Lunak.",
-    "Eksplorasi teknis saya berpusat pada perancangan arsitektur server modular berbasis Dependency Injection, pembuatan RESTful API terstruktur, serta pemodelan database relasional menggunakan ekosistem NestJS, TypeScript, Prisma ORM, dan PostgreSQL.",
-    "Saya mendalami standardisasi endpoint API, otentikasi berbasis token JWT (Role-Based Access Control), dokumentasi Swagger/OpenAPI, serta pengujian logika bisnis dan query database untuk memastikan reliabilitas sistem backend.",
+    "Saya adalah siswa jurusan Rekayasa Perangkat Lunak (RPL) di SMK Telkom Malang (2024–2027) yang memilih untuk mendalami jalur Backend Development secara serius sejak tahun pertama.",
+    "Fokus utama saya ada pada membangun RESTful API yang terstruktur, mengelola relasi data secara efisien, dan menerapkan standar keamanan seperti autentikasi JWT dengan Role-Based Access Control.",
+    "Di luar kurikulum sekolah, saya secara mandiri mengeksplorasi pola arsitektur modular, containerization, serta praktik dokumentasi API menggunakan Swagger/OpenAPI untuk mempersiapkan diri menghadapi lingkungan kerja profesional.",
   ],
   frontendApproach:
-    "Fokus penuh pada rekayasa sistem backend modular, type-safe API, dan pemodelan database relasional.",
+    "Fokus penuh pada rekayasa sistem backend yang type-safe, scalable, dan terdokumentasi.",
   profileImage: {
     src: "/images/profile.jpg",
     isAvailable: true,
